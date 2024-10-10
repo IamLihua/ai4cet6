@@ -1,0 +1,629 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>q</title>
+</head>
+<body class='typora-export os-windows typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#qualitative">qualitative</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-1">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-1">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-1">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-1">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-1">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-1">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-1">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-1">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#quantify">quantify</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-2">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-2">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-2">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-2">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-2">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-2">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-2">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-2">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#quantitative">quantitative</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-3">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-3">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-3">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-3">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-3">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-3">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-3">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-3">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#quart">quart</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-4">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-4">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-4">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-4">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-4">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-4">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-4">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-4">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#quarterly">quarterly</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-5">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-5">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-5">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-5">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-5">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-5">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-5">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-5">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#quartz">quartz</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-6">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-6">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-6">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-6">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-6">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-6">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-6">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-6">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#queer">queer</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-7">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-7">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-7">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-7">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-7">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-7">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-7">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-7">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#quench">quench</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-8">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-8">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-8">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-8">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-8">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-8">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-8">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-8">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#quest">quest</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-9">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-9">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-9">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-9">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-9">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-9">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-9">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-9">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#questionnaire">questionnaire</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-10">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-10">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-10">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-10">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-10">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-10">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-10">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-10">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#quiver">quiver</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-11">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-11">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-11">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-11">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-11">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-11">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-11">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-11">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#quota">quota</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-12">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-12">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-12">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-12">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-12">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-12">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-12">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-12">小故事</a></div><ul class="outline-children"></ul></li></ul></li></div></div><div id='write'  class=''><hr /><h2 id='qualitative'><span>qualitative</span></h2><h3 id='分析词义-1'><span>分析词义</span></h3><p><span>&quot;Qualitative&quot; 是一个形容词，主要用来描述事物的性质、特征或品质，而不是数量。换句话说，它关注的是“是什么”而不是“有多少”。例如，当我们说“qualitative analysis”（定性分析）时，我们指的是对事物的本质特征进行分析，而不是对数量进行测量。</span></p><h3 id='列举例句-1'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>科学研究</span></strong></p><ul><li><strong><span>英文</span></strong><span>: &quot;The qualitative aspects of the experiment were more interesting than the quantitative results.&quot;</span></li><li><strong><span>中文</span></strong><span>: “实验的定性方面比定量结果更有趣。”</span></li></ul></li><li><p><strong><span>市场调研</span></strong></p><ul><li><strong><span>英文</span></strong><span>: &quot;We conducted a qualitative survey to understand customer satisfaction.&quot;</span></li><li><strong><span>中文</span></strong><span>: “我们进行了一项定性调查来了解客户满意度。”</span></li></ul></li><li><p><strong><span>教育评估</span></strong></p><ul><li><strong><span>英文</span></strong><span>: &quot;The teacher focused on the qualitative improvements in students&#39; writing skills.&quot;</span></li><li><strong><span>中文</span></strong><span>: “老师关注学生写作技能的定性改进。”</span></li></ul></li></ol><h3 id='词根分析-1'><span>词根分析</span></h3><ul><li><p><strong><span>词根</span></strong><span>: &quot;qual-&quot; 来自拉丁语 &quot;qualis&quot;，意为“什么样的”。</span></p></li><li><p><strong><span>衍生单词</span></strong><span>:</span></p><ul><li><strong><span>Quality</span></strong><span> (品质)</span></li><li><strong><span>Qualify</span></strong><span> (使合格)</span></li><li><strong><span>Qualitative</span></strong><span> (定性的)</span></li></ul></li></ul><h3 id='词缀分析-1'><span>词缀分析</span></h3><ul><li><strong><span>前缀</span></strong><span>: 无</span></li><li><strong><span>词根</span></strong><span>: &quot;qual-&quot;</span></li><li><strong><span>后缀</span></strong><span>: &quot;-itative&quot; 表示“具有……性质的”</span></li></ul><p><strong><span>相同词缀的单词</span></strong><span>:</span></p><ul><li><strong><span>Quantitative</span></strong><span> (定量的)</span></li><li><strong><span>Speculative</span></strong><span> (推测的)</span></li><li><strong><span>Narrative</span></strong><span> (叙述的)</span></li></ul><h3 id='发展历史和文化背景-1'><span>发展历史和文化背景</span></h3><p><span>&quot;Qualitative&quot; 这个词源自拉丁语 &quot;qualis&quot;，意为“什么样的”。在中世纪拉丁语中，这个词逐渐演变成描述事物本质和特征的概念。在现代社会，&quot;qualitative&quot; 主要用于科学研究、市场调研和教育评估等领域，强调对事物内在属性的分析。在欧美文化中，定性分析与定量分析并重，共同构成了科学研究的基础。</span></p><h3 id='单词变形-1'><span>单词变形</span></h3><ul><li><strong><span>名词</span></strong><span>: Quality (品质)</span></li><li><strong><span>动词</span></strong><span>: Qualify (使合格)</span></li><li><strong><span>形容词</span></strong><span>: Qualitative (定性的)</span></li><li><strong><span>副词</span></strong><span>: Qualitatively (定性地)</span></li></ul><p><strong><span>固定搭配和组词</span></strong><span>:</span></p><ul><li><strong><span>Qualitative analysis</span></strong><span> (定性分析)</span></li><li><strong><span>Qualitative research</span></strong><span> (定性研究)</span></li><li><strong><span>Qualitative data</span></strong><span> (定性数据)</span></li></ul><h3 id='记忆辅助-1'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>: 将 &quot;qualitative&quot; 与 &quot;quality&quot;（品质）联系起来，记住它关注的是事物的品质和特征。</span></li><li><strong><span>词根记忆</span></strong><span>: 记住词根 &quot;qual-&quot; 意为“什么样的”，有助于理解相关词汇。</span></li><li><strong><span>场景记忆</span></strong><span>: 想象一个科学家在实验室进行定性分析的场景，帮助记忆单词的使用情境。</span></li></ol><h3 id='小故事-1'><span>小故事</span></h3><p><strong><span>英文</span></strong><span>:</span>
+<span>&quot;In the quiet lab, Sarah carefully conducted a qualitative analysis of the new compound. She noted its unique color and texture, which were crucial for understanding its properties. Her qualitative observations paved the way for further research.&quot;</span></p><p><strong><span>中文</span></strong><span>:</span>
+<span>“在安静的实验室里，莎拉仔细地对新化合物进行了定性分析。她记录了其独特的颜色和质地，这对理解其特性至关重要。她的定性观察为后续研究铺平了道路。”</span></p><hr /><h2 id='quantify'><span>quantify</span></h2><h3 id='分析词义-2'><span>分析词义</span></h3><p><strong><span>quantify</span></strong><span> 这个单词的意思是“量化”，即用数字或量度来表示某个事物或现象的程度、大小等。简单来说，就是把抽象或具体的事物变成可以计量的形式。</span></p><h3 id='列举例句-2'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>科学研究</span></strong></p><ul><li><strong><span>英文</span></strong><span>：Scientists need to quantify the amount of carbon dioxide in the atmosphere to study climate change.</span></li><li><strong><span>中文</span></strong><span>：科学家需要量化大气中的二氧化碳含量以研究气候变化。</span></li></ul></li><li><p><strong><span>商业分析</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The company aims to quantify the impact of its marketing campaign on sales.</span></li><li><strong><span>中文</span></strong><span>：公司旨在量化其营销活动对销售的影响。</span></li></ul></li><li><p><strong><span>日常生活</span></strong></p><ul><li><strong><span>英文</span></strong><span>：It&#39;s difficult to quantify happiness, but researchers are trying to develop metrics for it.</span></li><li><strong><span>中文</span></strong><span>：幸福很难量化，但研究人员正在尝试开发相关的度量标准。</span></li></ul></li></ol><h3 id='词根分析-2'><span>词根分析</span></h3><p><strong><span>quantify</span></strong><span> 的词根是 </span><strong><span>quant-</span></strong><span>，表示“量”或“数量”。</span></p><ul><li><p><strong><span>衍生单词</span></strong><span>：</span></p><ul><li><strong><span>quantity</span></strong><span>（数量）</span></li><li><strong><span>quantitative</span></strong><span>（定量的）</span></li><li><strong><span>quantum</span></strong><span>（量子）</span></li></ul></li></ul><h3 id='词缀分析-2'><span>词缀分析</span></h3><p><strong><span>quantify</span></strong><span> 由词根 </span><strong><span>quant-</span></strong><span> 和后缀 </span><strong><span>-ify</span></strong><span> 组成。</span></p><ul><li><p><strong><span>后缀 -ify</span></strong><span> 表示“使成为”或“使变成”。</span></p></li><li><p><strong><span>相同词缀的单词</span></strong><span>：</span></p><ul><li><strong><span>simplify</span></strong><span>（简化）</span></li><li><strong><span>classify</span></strong><span>（分类）</span></li><li><strong><span>purify</span></strong><span>（净化）</span></li></ul></li></ul><h3 id='发展历史和文化背景-2'><span>发展历史和文化背景</span></h3><p><strong><span>quantify</span></strong><span> 这个词源于拉丁语 </span><strong><span>quantus</span></strong><span>，意为“多少”。在中世纪拉丁语中，</span><strong><span>quantificare</span></strong><span> 意为“确定数量”。随着科学和数学的发展，这个词逐渐被引入英语，用于描述将事物用数字表示的过程。在欧美文化中，量化思维是科学研究和技术发展的基础，强调精确性和可测量性。</span></p><h3 id='单词变形-2'><span>单词变形</span></h3><ul><li><p><strong><span>名词</span></strong><span>：quantification（量化）</span></p></li><li><p><strong><span>动词变形</span></strong><span>：</span></p><ul><li><strong><span>现在分词</span></strong><span>：quantifying</span></li><li><strong><span>过去式</span></strong><span>：quantified</span></li><li><strong><span>过去分词</span></strong><span>：quantified</span></li></ul></li><li><p><strong><span>固定搭配</span></strong><span>：</span></p><ul><li><strong><span>quantify the risk</span></strong><span>（量化风险）</span></li><li><strong><span>quantify the impact</span></strong><span>（量化影响）</span></li></ul></li></ul><h3 id='记忆辅助-2'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>：将 </span><strong><span>quantify</span></strong><span> 与 </span><strong><span>quantity</span></strong><span>（数量）联系起来，记住“量化”就是确定数量的过程。</span></li><li><strong><span>词根记忆</span></strong><span>：记住词根 </span><strong><span>quant-</span></strong><span> 表示“量”，后缀 </span><strong><span>-ify</span></strong><span> 表示“使成为”，合起来就是“使成为可以计量的”。</span></li><li><strong><span>场景记忆</span></strong><span>：想象科学家在实验室里用仪器测量数据，这就是“量化”的过程。</span></li></ol><h3 id='小故事-2'><span>小故事</span></h3><p><strong><span>英文</span></strong><span>：</span>
+<span>In the lab, Sarah carefully quantified the chemicals in the mixture. She noted each measurement, ensuring accuracy. Her quantification helped the team understand the experiment&#39;s results.</span></p><p><strong><span>中文</span></strong><span>：</span>
+<span>在实验室里，莎拉仔细地量化了混合物中的化学物质。她记录下每一个测量值，确保准确性。她的量化工作帮助团队理解了实验的结果。</span></p><hr /><h2 id='quantitative'><span>quantitative</span></h2><h3 id='分析词义-3'><span>分析词义</span></h3><p><strong><span>quantitative</span></strong><span> 这个单词的意思是“定量的”或“数量的”。它用来描述与数量、数值或可以通过测量和计算得到的具体数据相关的事物。简单来说，就是与“多少”有关，而不是与“是什么”或“怎么样”有关。</span></p><h3 id='列举例句-3'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>科学研究</span></strong></p><ul><li><strong><span>英文</span></strong><span>: &quot;The experiment provided quantitative data on the effectiveness of the new drug.&quot;</span></li><li><strong><span>中文</span></strong><span>: “实验提供了关于新药有效性的定量数据。”</span></li></ul></li><li><p><strong><span>经济分析</span></strong></p><ul><li><strong><span>英文</span></strong><span>: &quot;Quantitative analysis is essential for making informed investment decisions.&quot;</span></li><li><strong><span>中文</span></strong><span>: “定量分析对于做出明智的投资决策至关重要。”</span></li></ul></li><li><p><strong><span>教育评估</span></strong></p><ul><li><strong><span>英文</span></strong><span>: &quot;The teacher used quantitative methods to assess students&#39; performance.&quot;</span></li><li><strong><span>中文</span></strong><span>: “老师使用定量方法来评估学生的表现。”</span></li></ul></li></ol><h3 id='词根分析-3'><span>词根分析</span></h3><p><strong><span>quantitative</span></strong><span> 的词根是 </span><strong><span>quant-</span></strong><span>，来源于拉丁语 </span><strong><span>quantus</span></strong><span>，意思是“多少”。这个词根常用于与数量、测量相关的词汇。</span></p><ul><li><p><strong><span>衍生单词</span></strong><span>:</span></p><ul><li><strong><span>quantity</span></strong><span> (n.) 数量</span></li><li><strong><span>quantify</span></strong><span> (v.) 量化</span></li><li><strong><span>quantum</span></strong><span> (n.) 量子</span></li></ul></li></ul><h3 id='词缀分析-3'><span>词缀分析</span></h3><p><strong><span>quantitative</span></strong><span> 由以下词缀组成：</span></p><ul><li><strong><span>前缀</span></strong><span>: 无</span></li><li><strong><span>词根</span></strong><span>: </span><strong><span>quant-</span></strong><span>（多少）</span></li><li><strong><span>后缀</span></strong><span>: </span><strong><span>-itative</span></strong><span>（表示“具有……性质的”）</span></li></ul><p><strong><span>相同词缀的其他单词</span></strong><span>:</span></p><ul><li><strong><span>qualitative</span></strong><span> (adj.) 定性的</span></li><li><strong><span>normative</span></strong><span> (adj.) 规范的</span></li><li><strong><span>comparative</span></strong><span> (adj.) 比较的</span></li></ul><h3 id='发展历史和文化背景-3'><span>发展历史和文化背景</span></h3><p><strong><span>quantitative</span></strong><span> 这个词源于拉丁语 </span><strong><span>quantus</span></strong><span>，意为“多少”。在中世纪拉丁语中，</span><strong><span>quantitas</span></strong><span> 表示“数量”。随着科学和数学的发展，特别是在文艺复兴时期，人们对精确测量的需求增加，这个词逐渐被引入英语，用来描述与数量相关的分析和研究。</span></p><p><span>在欧美文化中，</span><strong><span>quantitative</span></strong><span> 方法广泛应用于科学研究、经济学、统计学等领域，强调数据驱动和实证分析的重要性。</span></p><h3 id='单词变形-3'><span>单词变形</span></h3><ul><li><strong><span>名词</span></strong><span>: </span><strong><span>quantitation</span></strong><span> (定量)</span></li><li><strong><span>动词</span></strong><span>: </span><strong><span>quantify</span></strong><span> (量化)</span></li><li><strong><span>形容词</span></strong><span>: </span><strong><span>quantitative</span></strong><span> (定量的)</span></li><li><strong><span>副词</span></strong><span>: </span><strong><span>quantitatively</span></strong><span> (定量地)</span></li></ul><p><strong><span>固定搭配和组词</span></strong><span>:</span></p><ul><li><strong><span>quantitative analysis</span></strong><span> (定量分析)</span></li><li><strong><span>quantitative data</span></strong><span> (定量数据)</span></li><li><strong><span>quantitative research</span></strong><span> (定量研究)</span></li></ul><h3 id='记忆辅助-3'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>: 可以将 </span><strong><span>quantitative</span></strong><span> 与 </span><strong><span>quantity</span></strong><span>（数量）联系起来，因为它们有相同的词根 </span><strong><span>quant-</span></strong><span>。</span></li><li><strong><span>场景记忆</span></strong><span>: 想象一个科学家在实验室里用各种仪器测量数据，这些数据就是 </span><strong><span>quantitative data</span></strong><span>（定量数据）。</span></li><li><strong><span>谐音记忆</span></strong><span>: 可以将 </span><strong><span>quantitative</span></strong><span> 谐音为“抢它提”，想象在抢答问题时需要提到具体的数量数据。</span></li></ol><h3 id='小故事-3'><span>小故事</span></h3><p><strong><span>英文</span></strong><span>:</span>
+<span>&quot;In the lab, Sarah carefully recorded the quantitative data from her experiment. She knew that precise measurements were crucial for proving her hypothesis. As she analyzed the numbers, she felt confident about her findings.&quot;</span></p><p><strong><span>中文</span></strong><span>:</span>
+<span>“在实验室里，莎拉仔细记录了实验的定量数据。她知道精确的测量对于证明她的假设至关重要。当她分析这些数字时，她对她的发现感到自信。”</span></p><hr /><h2 id='quart'><span>quart</span></h2><h3 id='分析词义-4'><span>分析词义</span></h3><p><strong><span>quart</span></strong><span>（发音：/kwɔːrt/）是一个英语名词，主要指一种容量单位，等于四分之一加仑（gallon），在美国约为0.946升，在英国约为1.136升。常用于测量液体，如牛奶、酒等。</span></p><h3 id='列举例句-4'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>购物场景</span></strong></p><ul><li><strong><span>英文</span></strong><span>：She bought a quart of milk for the recipe.</span></li><li><strong><span>中文</span></strong><span>：她为食谱买了一夸脱牛奶。</span></li></ul></li><li><p><strong><span>烹饪场景</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The recipe calls for a quart of chicken broth.</span></li><li><strong><span>中文</span></strong><span>：这个食谱需要一夸脱鸡汤。</span></li></ul></li><li><p><strong><span>饮料场景</span></strong></p><ul><li><strong><span>英文</span></strong><span>：He drank a whole quart of lemonade in one go.</span></li><li><strong><span>中文</span></strong><span>：他一口气喝了一整夸脱柠檬水。</span></li></ul></li></ol><h3 id='词根分析-4'><span>词根分析</span></h3><p><strong><span>quart</span></strong><span> 的词根来自拉丁语 &quot;quartus&quot;，意为“第四”。因为一夸脱是四分之一加仑。</span></p><p><strong><span>衍生单词</span></strong><span>：</span></p><ul><li><strong><span>quarter</span></strong><span>（四分之一）</span></li><li><strong><span>quartet</span></strong><span>（四重奏）</span></li></ul><h3 id='词缀分析-4'><span>词缀分析</span></h3><p><strong><span>quart</span></strong><span> 本身没有明显的词缀，但可以与其他词缀结合形成新词。</span></p><p><strong><span>相同词根的单词</span></strong><span>：</span></p><ul><li><strong><span>quartile</span></strong><span>（四分位数）</span></li><li><strong><span>quarto</span></strong><span>（四开本）</span></li></ul><h3 id='发展历史和文化背景-4'><span>发展历史和文化背景</span></h3><p><strong><span>quart</span></strong><span> 这个词源于中世纪拉丁语 &quot;quartus&quot;，意为“第四”。在中世纪，容量单位常常是基于四分之一的分割方式，因此“quart”逐渐演变为表示四分之一加仑的容量单位。在欧美文化中，夸脱常用于日常生活中的液体测量，尤其是在烹饪和饮料制作中。</span></p><h3 id='单词变形-4'><span>单词变形</span></h3><ul><li><strong><span>名词</span></strong><span>：quart（夸脱）</span></li><li><strong><span>复数</span></strong><span>：quarts（夸脱们）</span></li><li><strong><span>形容词</span></strong><span>：quart-sized（夸脱大小的）</span></li></ul><p><strong><span>固定搭配</span></strong><span>：</span></p><ul><li><strong><span>a quart of</span></strong><span>（一夸脱的）</span></li><li><strong><span>quart jar</span></strong><span>（夸脱罐）</span></li></ul><h3 id='记忆辅助-4'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>：将 &quot;quart&quot; 与 &quot;quarter&quot;（四分之一）联系起来，因为一夸脱是四分之一加仑。</span></li><li><strong><span>场景记忆</span></strong><span>：想象在超市买牛奶，看到标签上写着 &quot;1 quart&quot;，帮助记忆其容量单位的意义。</span></li></ol><h3 id='小故事-4'><span>小故事</span></h3><p><strong><span>英文</span></strong><span>：</span>
+<span>In the old farmhouse, Grandma measured ingredients carefully. &quot;One quart of milk for the pie,&quot; she said, pouring it into the bowl. The scent of butter and flour filled the air, making everyone hungry.</span></p><p><strong><span>中文</span></strong><span>：</span>
+<span>在老农舍里，奶奶仔细地测量着食材。“派需要一夸脱牛奶，”她说着，把牛奶倒进碗里。黄油和面粉的香味弥漫在空气中，让每个人都感到饥饿。</span></p><hr /><h2 id='quarterly'><span>quarterly</span></h2><h3 id='分析词义-5'><span>分析词义</span></h3><p><strong><span>quarterly</span></strong><span> 这个单词主要有两个意思：</span></p><ol start='' ><li><strong><span>每季度的</span></strong><span>：指的是每三个月发生一次的事情。</span></li><li><strong><span>季刊</span></strong><span>：一种每三个月出版一次的期刊。</span></li></ol><h3 id='列举例句-5'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>财务报告</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The company releases its financial results quarterly.</span></li><li><strong><span>中文</span></strong><span>：公司每季度发布一次财务报告。</span></li></ul></li><li><p><strong><span>期刊订阅</span></strong></p><ul><li><strong><span>英文</span></strong><span>：I subscribe to a quarterly magazine on technology.</span></li><li><strong><span>中文</span></strong><span>：我订阅了一本关于科技的季刊。</span></li></ul></li><li><p><strong><span>会议安排</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The board of directors meets quarterly to discuss strategic plans.</span></li><li><strong><span>中文</span></strong><span>：董事会每季度召开一次会议讨论战略计划。</span></li></ul></li></ol><h3 id='词根分析-5'><span>词根分析</span></h3><p><strong><span>quarterly</span></strong><span> 的词根是 </span><strong><span>quarter</span></strong><span>，意为“四分之一”或“季度”。</span></p><p><strong><span>由词根衍生出来的其他单词</span></strong><span>：</span></p><ul><li><strong><span>quarter</span></strong><span>（四分之一）</span></li><li><strong><span>quartet</span></strong><span>（四重奏）</span></li><li><strong><span>quadrant</span></strong><span>（四分之一圆）</span></li></ul><h3 id='词缀分析-5'><span>词缀分析</span></h3><p><strong><span>quarterly</span></strong><span> 由词根 </span><strong><span>quarter</span></strong><span> 和后缀 </span><strong><span>-ly</span></strong><span> 组成。</span></p><ul><li><strong><span>-ly</span></strong><span> 是一个常见的后缀，用于将名词或形容词变成副词或形容词，表示“每……地”或“具有……性质”。</span></li></ul><p><strong><span>相同词缀的其他单词</span></strong><span>：</span></p><ul><li><strong><span>yearly</span></strong><span>（每年地）</span></li><li><strong><span>monthly</span></strong><span>（每月地）</span></li><li><strong><span>daily</span></strong><span>（每日地）</span></li></ul><h3 id='发展历史和文化背景-5'><span>发展历史和文化背景</span></h3><p><strong><span>quarterly</span></strong><span> 这个词源于拉丁语 </span><strong><span>quartus</span></strong><span>，意为“第四”。在中古英语时期，</span><strong><span>quarter</span></strong><span> 用来表示时间的四分之一，即三个月。随着语言的发展，</span><strong><span>quarterly</span></strong><span> 逐渐用来描述每季度发生的事情或出版的期刊。</span></p><p><span>在欧美文化中，</span><strong><span>quarterly</span></strong><span> 常用于商业、教育和出版领域，表示定期进行的评估、报告或出版活动，体现了对时间管理和规划的重视。</span></p><h3 id='单词变形-5'><span>单词变形</span></h3><ul><li><strong><span>名词</span></strong><span>：quarterly（季刊）</span></li><li><strong><span>形容词</span></strong><span>：quarterly（每季度的）</span></li><li><strong><span>副词</span></strong><span>：quarterly（每季度地）</span></li></ul><p><strong><span>固定搭配和组词</span></strong><span>：</span></p><ul><li><strong><span>quarterly report</span></strong><span>（季度报告）</span></li><li><strong><span>quarterly meeting</span></strong><span>（季度会议）</span></li><li><strong><span>quarterly review</span></strong><span>（季度审查）</span></li></ul><h3 id='记忆辅助-5'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>：将 </span><strong><span>quarterly</span></strong><span> 与 </span><strong><span>quarter</span></strong><span>（四分之一）联系起来，记住每季度就是每四个月一次。</span></li><li><strong><span>场景记忆</span></strong><span>：想象每三个月要交一次作业或报告，这样就能记住 </span><strong><span>quarterly</span></strong><span> 的意思。</span></li><li><strong><span>词缀记忆</span></strong><span>：记住 </span><strong><span>-ly</span></strong><span> 是表示“每……地”的后缀，结合 </span><strong><span>quarter</span></strong><span> 就能理解 </span><strong><span>quarterly</span></strong><span> 的含义。</span></li></ol><h3 id='小故事-5'><span>小故事</span></h3><p><strong><span>英文</span></strong><span>：</span>
+<span>Every spring, summer, fall, and winter, Tom eagerly awaited the quarterly newsletter from his alma mater. It kept him updated on campus events and alumni achievements. Last spring, he was thrilled to see his name mentioned for a scholarship he had established.</span></p><p><strong><span>中文</span></strong><span>：</span>
+<span>每年春天、夏天、秋天和冬天，汤姆都热切地期待着母校的季刊。它让他了解校园活动和校友成就。去年春天，他很高兴看到自己的名字因设立奖学金而被提及。</span></p><hr /><h2 id='quartz'><span>quartz</span></h2><h3 id='分析词义-6'><span>分析词义</span></h3><p><strong><span>Quartz</span></strong><span>（石英）是一种常见的矿物，主要成分是二氧化硅（SiO₂）。它广泛存在于自然界中，具有多种颜色和形态，常用于制作珠宝、钟表和电子设备等。</span></p><h3 id='列举例句-6'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>Scientific Context</span></strong></p><ul><li><strong><span>English</span></strong><span>: &quot;The geologist examined the quartz crystals found in the rock sample.&quot;</span></li><li><strong><span>中文</span></strong><span>: “地质学家检查了在岩石样本中发现的石英晶体。”</span></li></ul></li><li><p><strong><span>Jewelry Context</span></strong></p><ul><li><strong><span>English</span></strong><span>: &quot;She wore a beautiful quartz necklace to the party.&quot;</span></li><li><strong><span>中文</span></strong><span>: “她戴着一条漂亮的石英项链去参加派对。”</span></li></ul></li><li><p><strong><span>Technological Context</span></strong></p><ul><li><strong><span>English</span></strong><span>: &quot;Quartz is used in the manufacturing of precision watches due to its stability.&quot;</span></li><li><strong><span>中文</span></strong><span>: “由于石英的稳定性，它被用于制造精密手表。”</span></li></ul></li></ol><h3 id='词根分析-6'><span>词根分析</span></h3><p><strong><span>Quartz</span></strong><span> 这个词的词根并不明显，因为它是一个德语借词。德语中“Quarz”指的是这种矿物。</span></p><h3 id='词缀分析-6'><span>词缀分析</span></h3><p><strong><span>Quartz</span></strong><span> 没有明显的词缀结构，因为它是一个整体借词。</span></p><h3 id='发展历史和文化背景-6'><span>发展历史和文化背景</span></h3><p><strong><span>Quartz</span></strong><span> 这个词源自德语“Quarz”，最早在14世纪进入英语。石英作为一种矿物，自古以来就被人类使用。在古代，石英被用作装饰品和工具。在现代，石英因其物理特性（如压电性）而被广泛应用于科技领域。在欧美文化中，石英也常被视为一种具有神秘力量的宝石。</span></p><h3 id='单词变形-6'><span>单词变形</span></h3><ul><li><strong><span>名词</span></strong><span>: Quartz（石英）</span></li><li><strong><span>复数</span></strong><span>: Quartzes（石英们，虽然不常用）</span></li><li><strong><span>形容词</span></strong><span>: Quartz-like（类似石英的）</span></li></ul><p><strong><span>固定搭配和组词</span></strong><span>:</span></p><ul><li><strong><span>Quartz crystal</span></strong><span>（石英晶体）</span></li><li><strong><span>Quartz watch</span></strong><span>（石英手表）</span></li><li><strong><span>Rose quartz</span></strong><span>（粉晶）</span></li></ul><h3 id='记忆辅助-6'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>: 可以将“Quartz”联想成“Quality + Art + Stone”，即“高质量的工艺石”。</span></li><li><strong><span>谐音记忆</span></strong><span>: “Quartz”发音类似“夸artz”，可以想象成“夸赞的石头”。</span></li></ol><h3 id='小故事-6'><span>小故事</span></h3><p><strong><span>English</span></strong><span>:</span>
+<span>&quot;In the quiet forest, Emily found a shiny quartz stone. She held it up to the sunlight, and it sparkled like a tiny star. She decided to keep it as a lucky charm.&quot;</span></p><p><strong><span>中文</span></strong><span>:</span>
+<span>“在宁静的森林里，艾米丽发现了一块闪亮的石英石。她把它举到阳光下，它像一颗小星星一样闪闪发光。她决定把它当作幸运符保留下来。”</span></p><hr /><h2 id='queer'><span>queer</span></h2><h3 id='分析词义-7'><span>分析词义</span></h3><p><span>&quot;Queer&quot; 这个单词在英语中有多种含义，主要可以分为以下几类：</span></p><ol start='' ><li><strong><span>古怪、奇怪的</span></strong><span>：指某事物或某人行为举止异常，不合常规。</span></li><li><strong><span>同性恋的</span></strong><span>：在现代语境中，特别是在LGBTQ+社群中，&quot;queer&quot;常用来指代同性恋或其他非异性恋、非顺性别的人。</span></li><li><strong><span>不舒服的、不快的</span></strong><span>：这个用法较为古老，指身体或心理上的不适。</span></li></ol><h3 id='列举例句-7'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>古怪、奇怪的</span></strong></p><ul><li><strong><span>例句</span></strong><span>：The old house had a queer atmosphere that made everyone feel uneasy.</span></li><li><strong><span>中文翻译</span></strong><span>：那座老房子有一种古怪的气氛，让每个人都感到不安。</span></li></ul></li><li><p><strong><span>同性恋的</span></strong></p><ul><li><strong><span>例句</span></strong><span>：He openly identified as queer and was proud of his identity.</span></li><li><strong><span>中文翻译</span></strong><span>：他公开认同自己是同性恋，并且为自己的身份感到自豪。</span></li></ul></li><li><p><strong><span>不舒服的、不快的</span></strong></p><ul><li><strong><span>例句</span></strong><span>：She felt queer after eating the expired food.</span></li><li><strong><span>中文翻译</span></strong><span>：吃了过期的食物后，她感到不舒服。</span></li></ul></li></ol><h3 id='词根分析-7'><span>词根分析</span></h3><p><span>&quot;Queer&quot; 的词根较为复杂，其来源可能是古斯堪的纳维亚语 &quot;kviðr&quot;（意为“扭曲的”），但更直接的来源是中古英语 &quot;quer&quot; 或 &quot;quere&quot;，意为“斜的、扭曲的”。</span></p><h3 id='词缀分析-7'><span>词缀分析</span></h3><p><span>&quot;Queer&quot; 作为一个单词，没有明显的词缀结构。它是一个独立的词根，没有前缀、后缀或中缀。</span></p><h3 id='发展历史和文化背景-7'><span>发展历史和文化背景</span></h3><p><span>&quot;Queer&quot; 最初的意思是“扭曲的”或“古怪的”，在19世纪末到20世纪初，这个词逐渐被用来贬低同性恋者。然而，到了20世纪末，LGBTQ+社群开始重新夺回这个词，将其用作自我认同和骄傲的标志。现在，&quot;queer&quot; 在学术界和社群中常用来描述性别和性取向的多样性。</span></p><h3 id='单词变形-7'><span>单词变形</span></h3><ul><li><strong><span>名词</span></strong><span>：queerness（古怪性，同性恋身份）</span></li><li><strong><span>形容词</span></strong><span>：queer（古怪的，同性恋的）</span></li><li><strong><span>副词</span></strong><span>：queerly（古怪地）</span></li></ul><h3 id='记忆辅助-7'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>：可以将 &quot;queer&quot; 与 &quot;question&quot;（问题）联系起来，因为“古怪的”事物往往引发疑问。</span></li><li><strong><span>谐音记忆</span></strong><span>：可以把 &quot;queer&quot; 读作“奇儿”，意为“奇怪的人”。</span></li></ol><h3 id='小故事-7'><span>小故事</span></h3><p><strong><span>英文故事</span></strong><span>：</span>
+<span>In the small town, there was a queer old shop with colorful windows. Inside, a queer artist painted vibrant scenes. People whispered, but the artist smiled, proud of his queerness.</span></p><p><strong><span>中文翻译</span></strong><span>：</span>
+<span>在这个小镇上，有一家古怪的老店，窗户五彩斑斓。店里，一位古怪的艺术家正在绘制生动的场景。人们窃窃私语，但艺术家微笑着，为自己的同性恋身份感到骄傲。</span></p><hr /><h2 id='quench'><span>quench</span></h2><h3 id='分析词义-8'><span>分析词义</span></h3><p><strong><span>quench</span></strong><span> 这个词在英语中主要有两个意思：</span></p><ol start='' ><li><strong><span>熄灭</span></strong><span>：指扑灭火焰或灯火。</span></li><li><strong><span>解渴</span></strong><span>：指通过喝水或其他饮料来消除口渴。</span></li></ol><h3 id='列举例句-8'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>熄灭</span></strong></p><ul><li><strong><span>English</span></strong><span>: &quot;The firemen worked hard to quench the fire before it spread to nearby buildings.&quot;</span></li><li><strong><span>中文翻译</span></strong><span>：消防员们努力扑灭火焰，以防它蔓延到附近的建筑物。</span></li></ul></li><li><p><strong><span>解渴</span></strong></p><ul><li><strong><span>English</span></strong><span>: &quot;After the long hike, she quenched her thirst with a cold bottle of water.&quot;</span></li><li><strong><span>中文翻译</span></strong><span>：长途徒步后，她用一瓶冷水解渴。</span></li></ul></li><li><p><strong><span>比喻用法</span></strong></p><ul><li><strong><span>English</span></strong><span>: &quot;His curiosity was quenched by the detailed explanation.&quot;</span></li><li><strong><span>中文翻译</span></strong><span>：详细的解释满足了他的好奇心。</span></li></ul></li></ol><h3 id='词根分析-8'><span>词根分析</span></h3><p><strong><span>quench</span></strong><span> 的词根是 </span><strong><span>quen-</span></strong><span>，来源于古英语的 </span><strong><span>cwencan</span></strong><span>，意为“熄灭”或“压制”。</span></p><p><strong><span>衍生单词</span></strong><span>：</span></p><ul><li><strong><span>quenchable</span></strong><span> (可熄灭的)</span></li><li><strong><span>quenching</span></strong><span> (熄灭的，解渴的)</span></li></ul><h3 id='词缀分析-8'><span>词缀分析</span></h3><p><strong><span>quench</span></strong><span> 没有明显的词缀，它是一个独立的单词。但我们可以通过添加词缀来形成新的单词：</span></p><p><strong><span>衍生单词</span></strong><span>：</span></p><ul><li><strong><span>quenchable</span></strong><span> (-able 表示“可……的”)</span></li><li><strong><span>quenching</span></strong><span> (-ing 表示进行时或形容词)</span></li><li><strong><span>quenched</span></strong><span> (-ed 表示过去时或形容词)</span></li></ul><h3 id='发展历史和文化背景-8'><span>发展历史和文化背景</span></h3><p><strong><span>quench</span></strong><span> 这个词最早出现在古英语中，意为“熄灭”或“压制”。随着时间的推移，它的意义扩展到“解渴”。在欧美文化中，</span><strong><span>quench</span></strong><span> 常用于描述通过喝水或其他饮料来消除口渴的行为，也常用于比喻满足某种强烈的欲望或需求。</span></p><h3 id='单词变形-8'><span>单词变形</span></h3><ul><li><p><strong><span>名词</span></strong><span>：quenching (解渴，熄灭)</span></p></li><li><p><strong><span>动词</span></strong><span>：</span></p><ul><li><strong><span>现在时</span></strong><span>：quench</span></li><li><strong><span>过去时</span></strong><span>：quenched</span></li><li><strong><span>过去分词</span></strong><span>：quenched</span></li><li><strong><span>进行时</span></strong><span>：quenching</span></li></ul></li></ul><p><strong><span>固定搭配</span></strong><span>：</span></p><ul><li><strong><span>quench one&#39;s thirst</span></strong><span> (解渴)</span></li><li><strong><span>quench the fire</span></strong><span> (熄灭火焰)</span></li></ul><h3 id='记忆辅助-8'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>：将 </span><strong><span>quench</span></strong><span> 与“quick”联想，想象快速（quick）喝水来解渴（quench）。</span></li><li><strong><span>场景记忆</span></strong><span>：想象一个消防员扑灭火焰的场景，嘴里说着“quench the fire”。</span></li></ol><h3 id='小故事-8'><span>小故事</span></h3><p><strong><span>English</span></strong><span>:</span>
+<span>&quot;On a scorching summer day, Lisa felt her throat burning. She rushed to the fridge and grabbed a chilled lemonade, taking a long sip. The cool liquid quenched her thirst instantly, bringing a smile to her face.&quot;</span></p><p><strong><span>中文翻译</span></strong><span>：</span>
+<span>在一个炎热的夏日，丽莎感到喉咙灼热。她冲到冰箱前，拿出一瓶冰凉的柠檬水，大口喝下。冰凉的液体立刻解了她的渴，脸上露出了笑容。</span></p><hr /><h2 id='quest'><span>quest</span></h2><h3 id='分析词义-9'><span>分析词义</span></h3><p><strong><span>Quest</span></strong><span> 这个单词在中文中可以翻译为“探索”、“寻求”或“任务”。它通常指的是一种有目的的追寻或探险，常常带有一定的挑战性和重要性。</span></p><h3 id='列举例句-9'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>学术研究</span></strong></p><ul><li><strong><span>英文</span></strong><span>: &quot;The scientist embarked on a quest to find a cure for the disease.&quot;</span></li><li><strong><span>中文</span></strong><span>: “科学家开始了一项寻找疾病治愈方法的探索。”</span></li></ul></li><li><p><strong><span>个人成长</span></strong></p><ul><li><strong><span>英文</span></strong><span>: &quot;Her quest for self-discovery took her around the world.&quot;</span></li><li><strong><span>中文</span></strong><span>: “她为了自我发现而环游世界。”</span></li></ul></li><li><p><strong><span>文学故事</span></strong></p><ul><li><strong><span>英文</span></strong><span>: &quot;In the novel, the hero&#39;s quest was to retrieve the lost treasure.&quot;</span></li><li><strong><span>中文</span></strong><span>: “在小说中，英雄的任务是找回失落的宝藏。”</span></li></ul></li></ol><h3 id='词根分析-9'><span>词根分析</span></h3><p><strong><span>Quest</span></strong><span> 的词根是 </span><strong><span>-quest-</span></strong><span>，表示“寻求”或“询问”。</span></p><ul><li><p><strong><span>衍生单词</span></strong><span>:</span></p><ul><li><strong><span>Question</span></strong><span> (问题)</span></li><li><strong><span>Quester</span></strong><span> (探索者)</span></li><li><strong><span>Inquest</span></strong><span> (审讯)</span></li></ul></li></ul><h3 id='词缀分析-9'><span>词缀分析</span></h3><p><strong><span>Quest</span></strong><span> 本身是一个独立的单词，没有明显的词缀。但可以与其他词缀结合形成新词。</span></p><ul><li><p><strong><span>例词</span></strong><span>:</span></p><ul><li><strong><span>Question</span></strong><span> (问题，前缀 </span><strong><span>-que-</span></strong><span> 表示“询问”，后缀 </span><strong><span>-tion</span></strong><span> 表示名词)</span></li><li><strong><span>Quester</span></strong><span> (探索者，后缀 </span><strong><span>-er</span></strong><span> 表示“做……的人”)</span></li></ul></li></ul><h3 id='发展历史和文化背景-9'><span>发展历史和文化背景</span></h3><p><strong><span>Quest</span></strong><span> 这个词源自古法语 </span><strong><span>queste</span></strong><span>，意为“寻求”或“询问”，进一步追溯到拉丁语 </span><strong><span>quaerere</span></strong><span>，意为“寻找”或“询问”。在欧美文化中，</span><strong><span>quest</span></strong><span> 常常与英雄传说和史诗故事联系在一起，象征着一种高尚的追求和冒险精神。例如，亚瑟王寻找圣杯的故事就是一个典型的 </span><strong><span>quest</span></strong><span>。</span></p><h3 id='单词变形-9'><span>单词变形</span></h3><ul><li><p><strong><span>名词</span></strong><span>: Quest (探索)</span></p></li><li><p><strong><span>动词</span></strong><span>: Quest (探索，过去式和过去分词为 quested，现在分词为 questing)</span></p></li><li><p><strong><span>形容词</span></strong><span>: Questing (探索中的)</span></p></li><li><p><strong><span>副词</span></strong><span>: Questingly (探索地)</span></p></li><li><p><strong><span>固定搭配</span></strong><span>:</span></p><ul><li><strong><span>Quest for</span></strong><span> (寻求……)</span></li><li><strong><span>On a quest</span></strong><span> (在探索中)</span></li></ul></li></ul><h3 id='记忆辅助-9'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>: 可以将 </span><strong><span>quest</span></strong><span> 与 </span><strong><span>question</span></strong><span> 联系起来，因为两者都涉及到“寻求”和“询问”的意思。</span></li><li><strong><span>场景记忆</span></strong><span>: 想象一个英雄踏上寻找宝藏的旅程，这样可以帮助记忆 </span><strong><span>quest</span></strong><span> 的含义。</span></li></ol><h3 id='小故事-9'><span>小故事</span></h3><p><strong><span>英文</span></strong><span>:</span>
+<span>&quot;In the ancient forest, a young knight embarked on a quest to find the enchanted sword. He journeyed through dense woods, crossed treacherous rivers, and faced fierce creatures. Finally, in a hidden cave, he discovered the gleaming sword, fulfilling his quest.&quot;</span></p><p><strong><span>中文</span></strong><span>:</span>
+<span>“在古老的森林里，一位年轻的骑士踏上寻找魔法剑的探索之旅。他穿越茂密的树林，跨过险恶的河流，面对凶猛的怪兽。最终，在一个隐藏的洞穴里，他发现了闪亮的剑，完成了他的任务。”</span></p><hr /><h2 id='questionnaire'><span>questionnaire</span></h2><h3 id='分析词义-10'><span>分析词义</span></h3><p><strong><span>questionnaire</span></strong><span>（问卷调查）是一种用于收集信息的工具，通常包含一系列问题，由受访者填写或回答。它广泛应用于市场调研、学术研究、社会调查等领域。</span></p><h3 id='列举例句-10'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>市场调研</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The company distributed a questionnaire to gather customer feedback.</span></li><li><strong><span>中文</span></strong><span>：公司分发了一份问卷调查以收集客户反馈。</span></li></ul></li><li><p><strong><span>学术研究</span></strong></p><ul><li><strong><span>英文</span></strong><span>：Students were asked to complete a questionnaire about their study habits.</span></li><li><strong><span>中文</span></strong><span>：学生们被要求填写一份关于他们学习习惯的问卷调查。</span></li></ul></li><li><p><strong><span>社会调查</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The government conducted a questionnaire to assess public opinion on the new policy.</span></li><li><strong><span>中文</span></strong><span>：政府进行了一份问卷调查以评估公众对新政策的看法。</span></li></ul></li></ol><h3 id='词根分析-10'><span>词根分析</span></h3><ul><li><p><strong><span>词根</span></strong><span>：question（问题）</span></p></li><li><p><strong><span>衍生单词</span></strong><span>：</span></p><ul><li><span>question（问题）</span></li><li><span>questioning（质疑）</span></li><li><span>questioner（提问者）</span></li></ul></li></ul><h3 id='词缀分析-10'><span>词缀分析</span></h3><ul><li><p><strong><span>词缀</span></strong><span>：-naire（表示“与……有关的”或“包含……的”）</span></p></li><li><p><strong><span>相同词缀的单词</span></strong><span>：</span></p><ul><li><span>memorandum（备忘录）</span></li><li><span>portfolio（文件夹）</span></li></ul></li></ul><h3 id='发展历史和文化背景-10'><span>发展历史和文化背景</span></h3><p><strong><span>questionnaire</span></strong><span> 这个词源于法语，最初由“question”（问题）和“-naire”（表示“与……有关的”）组成。19世纪末，随着社会科学的发展，问卷调查成为收集数据的重要工具。在欧美文化中，问卷调查广泛应用于商业、学术和社会研究，被视为科学决策的重要依据。</span></p><h3 id='单词变形-10'><span>单词变形</span></h3><ul><li><strong><span>名词</span></strong><span>：questionnaire（问卷调查）</span></li><li><strong><span>复数</span></strong><span>：questionnaires（问卷调查们）</span></li><li><strong><span>动词</span></strong><span>：questionnaire 不直接变动词，但相关动词有 survey（调查）</span></li><li><strong><span>形容词</span></strong><span>：questionnaire-based（基于问卷调查的）</span></li><li><strong><span>副词</span></strong><span>：无直接副词形式</span></li></ul><p><strong><span>固定搭配和组词</span></strong><span>：</span></p><ul><li><span>fill out a questionnaire（填写问卷调查）</span></li><li><span>distribute a questionnaire（分发问卷调查）</span></li><li><span>analyze questionnaire data（分析问卷调查数据）</span></li></ul><h3 id='记忆辅助-10'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>：将 </span><strong><span>questionnaire</span></strong><span> 想象成“提问的卷子”（question + -naire），容易记住其与问卷调查相关的含义。</span></li><li><strong><span>谐音记忆</span></strong><span>：可以将 </span><strong><span>questionnaire</span></strong><span> 谐音为“问卷儿”，帮助记忆其含义。</span></li></ol><h3 id='小故事-10'><span>小故事</span></h3><p><strong><span>英文</span></strong><span>：</span>
+<span>Sarah received a questionnaire in her email. She sat down with a cup of tea and began to fill it out, answering questions about her favorite products. It helped the company understand customer preferences.</span></p><p><strong><span>中文</span></strong><span>：</span>
+<span>莎拉在邮箱里收到了一份问卷调查。她坐下来，端着一杯茶，开始填写，回答关于她最喜欢的产品的各种问题。这帮助公司了解了顾客的偏好。</span></p><hr /><h2 id='quiver'><span>quiver</span></h2><h3 id='分析词义-11'><span>分析词义</span></h3><p><span>&quot;Quiver&quot; 这个单词有两个主要的意思：</span></p><ol start='' ><li><strong><span>动词</span></strong><span>：颤抖、震动。指某物或某人因寒冷、恐惧、激动等原因而轻微地、快速地抖动。</span></li><li><strong><span>名词</span></strong><span>：箭袋。古代或现代射箭时用来装箭的袋子。</span></li></ol><h3 id='列举例句-11'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>动词</span></strong><span>：</span></p><ul><li><strong><span>例句</span></strong><span>：Her hands quivered with excitement as she opened the gift.</span>
+<strong><span>翻译</span></strong><span>：她打开礼物时，双手因激动而颤抖。</span></li><li><strong><span>例句</span></strong><span>：The leaves quivered in the gentle breeze.</span>
+<strong><span>翻译</span></strong><span>：树叶在微风中轻轻颤动。</span></li><li><strong><span>例句</span></strong><span>：He quivered with fear when he heard the footsteps behind him.</span>
+<strong><span>翻译</span></strong><span>：当他听到身后的脚步声时，他因恐惧而颤抖。</span></li></ul></li><li><p><strong><span>名词</span></strong><span>：</span></p><ul><li><strong><span>例句</span></strong><span>：The archer reached into his quiver and pulled out an arrow.</span>
+<strong><span>翻译</span></strong><span>：弓箭手伸手进箭袋，拔出一支箭。</span></li><li><strong><span>例句</span></strong><span>：She wore a quiver on her back, ready for the archery competition.</span>
+<strong><span>翻译</span></strong><span>：她背上背着箭袋，准备参加射箭比赛。</span></li><li><strong><span>例句</span></strong><span>：The quiver was filled with arrows of different lengths.</span>
+<strong><span>翻译</span></strong><span>：箭袋里装满了不同长度的箭。</span></li></ul></li></ol><h3 id='词根分析-11'><span>词根分析</span></h3><ul><li><p><strong><span>词根</span></strong><span>：quiv-，来自古英语 &quot;cwifer&quot;，意为“颤抖”。</span></p></li><li><p><strong><span>衍生单词</span></strong><span>：</span></p><ul><li><strong><span>quiverish</span></strong><span>：形容词，意为“容易颤抖的”。</span></li><li><strong><span>quivering</span></strong><span>：形容词或动词现在分词，意为“颤抖的”或“正在颤抖”。</span></li></ul></li></ul><h3 id='词缀分析-11'><span>词缀分析</span></h3><ul><li><p><strong><span>动词 quiver</span></strong><span>：</span></p><ul><li><strong><span>词根</span></strong><span>：quiv-</span></li><li><strong><span>后缀</span></strong><span>：-er，表示动作或状态。</span></li></ul></li><li><p><strong><span>名词 quiver</span></strong><span>：</span></p><ul><li><strong><span>词根</span></strong><span>：quiv-</span></li><li><strong><span>后缀</span></strong><span>：-er，这里表示一种容器或工具。</span></li></ul></li><li><p><strong><span>相同词缀的单词</span></strong><span>：</span></p><ul><li><p><strong><span>-er</span></strong><span>：</span></p><ul><li><strong><span>runner</span></strong><span>：跑步者</span></li><li><strong><span>writer</span></strong><span>：作家</span></li><li><strong><span>teacher</span></strong><span>：教师</span></li></ul></li></ul></li></ul><h3 id='发展历史和文化背景-11'><span>发展历史和文化背景</span></h3><p><span>&quot;Quiver&quot; 这个词最早源于古英语 &quot;cwifer&quot;，意为“颤抖”。在中古英语中演变为 &quot;quiver&quot;。作为动词，它描述了物体或人的轻微抖动，常用来表达情绪或物理状态的波动。</span></p><p><span>作为名词，&quot;quiver&quot; 指的是装箭的袋子，这在古代和中世纪的战争中非常常见。箭袋是弓箭手的重要装备，象征着力量和准备。</span></p><p><span>在欧美文化中，&quot;quiver&quot; 常出现在与射箭、狩猎相关的文学和影视作品中，象征着精准和力量。</span></p><h3 id='单词变形-11'><span>单词变形</span></h3><ul><li><p><strong><span>动词变形</span></strong><span>：</span></p><ul><li><strong><span>现在时</span></strong><span>：quiver</span></li><li><strong><span>过去时</span></strong><span>：quivered</span></li><li><strong><span>过去分词</span></strong><span>：quivered</span></li><li><strong><span>现在分词</span></strong><span>：quivering</span></li></ul></li><li><p><strong><span>名词变形</span></strong><span>：</span></p><ul><li><strong><span>单数</span></strong><span>：quiver</span></li><li><strong><span>复数</span></strong><span>：quivers</span></li></ul></li><li><p><strong><span>固定搭配</span></strong><span>：</span></p><ul><li><strong><span>quiver with</span></strong><span>：因……而颤抖（如 quiver with fear）</span></li><li><strong><span>quiver in</span></strong><span>：在……中颤抖（如 quiver in the breeze）</span></li></ul></li></ul><h3 id='记忆辅助-11'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>：将 &quot;quiver&quot; 与 “快抖” 联系起来，想象某人因寒冷或恐惧而快速抖动。</span></li><li><strong><span>图像记忆</span></strong><span>：想象一个弓箭手背着一个装满箭的箭袋（quiver），准备射击。</span></li><li><strong><span>词根记忆</span></strong><span>：记住词根 &quot;quiv-&quot; 意为“颤抖”，可以帮助记住相关单词。</span></li></ol><h3 id='小故事-11'><span>小故事</span></h3><p><strong><span>英文</span></strong><span>：</span>
+<span>In the dense forest, an archer stood silently. His hands quivered slightly as he aimed at the target. From his quiver, he pulled out a sleek arrow and released it with precision.</span></p><p><strong><span>中文</span></strong><span>：</span>
+<span>在茂密的森林中，一名弓箭手静静地站立着。他的双手微微颤抖，瞄准目标。他从箭袋中拔出一支光滑的箭，精准地射出。</span></p><hr /><h2 id='quota'><span>quota</span></h2><h3 id='分析词义-12'><span>分析词义</span></h3><p><strong><span>Quota</span></strong><span>（读音：/ˈkwoʊtə/）是一个名词，指的是分配给个人或团体的特定数量或份额。它可以用于多种场景，如工作、销售、移民等，表示一种限制或目标。</span></p><h3 id='列举例句-12'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>工作场景</span></strong></p><ul><li><strong><span>英文</span></strong><span>：Each salesperson has a monthly quota to meet.</span></li><li><strong><span>中文</span></strong><span>：每个销售员都有一个每月要完成的目标配额。</span></li></ul></li><li><p><strong><span>教育场景</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The university has a quota for international students.</span></li><li><strong><span>中文</span></strong><span>：这所大学对国际学生有一个名额限制。</span></li></ul></li><li><p><strong><span>移民政策</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The government has set a quota on the number of refugees allowed into the country.</span></li><li><strong><span>中文</span></strong><span>：政府设定了允许进入该国的难民数量配额。</span></li></ul></li></ol><h3 id='词根分析-12'><span>词根分析</span></h3><p><strong><span>Quota</span></strong><span> 的词根是 </span><strong><span>quot-</span></strong><span>，来源于拉丁语 </span><strong><span>quotus</span></strong><span>，意为“多少”或“第几个”。</span></p><p><strong><span>衍生单词</span></strong><span>：</span></p><ul><li><strong><span>Quotient</span></strong><span>（商数）：数学中两个数相除的结果。</span></li><li><strong><span>Quote</span></strong><span>（引用）：引用他人的话或文字。</span></li></ul><h3 id='词缀分析-12'><span>词缀分析</span></h3><p><strong><span>Quota</span></strong><span> 没有明显的词缀，但它本身可以看作是由词根 </span><strong><span>quot-</span></strong><span> 加上后缀 </span><strong><span>-a</span></strong><span> 构成，</span><strong><span>-a</span></strong><span> 在拉丁语中常用于形成名词。</span></p><p><strong><span>相同词缀的单词</span></strong><span>：</span></p><ul><li><strong><span>Data</span></strong><span>（数据）</span></li><li><strong><span>Agenda</span></strong><span>（议程）</span></li></ul><h3 id='发展历史和文化背景-12'><span>发展历史和文化背景</span></h3><p><strong><span>Quota</span></strong><span> 一词最早来源于拉丁语，意为“多少”或“第几个”。在中世纪拉丁语中，它逐渐演变为表示“分配的数量”或“份额”。在现代英语中，</span><strong><span>quota</span></strong><span> 主要用于表示各种限制或目标，广泛应用于商业、教育、政治等领域。</span></p><p><span>在欧美文化中，</span><strong><span>quota</span></strong><span> 常与公平和效率相关联。例如，在职场中，设定销售配额可以激励员工；在移民政策中，设定配额可以控制人口流动。</span></p><h3 id='单词变形-12'><span>单词变形</span></h3><p><strong><span>名词</span></strong><span>：</span></p><ul><li><strong><span>Quota</span></strong><span>（配额）</span></li></ul><p><strong><span>动词</span></strong><span>：</span></p><ul><li><strong><span>Quota</span></strong><span> 本身没有动词形式，但可以用 </span><strong><span>meet a quota</span></strong><span>（完成配额）或 </span><strong><span>set a quota</span></strong><span>（设定配额）等短语。</span></li></ul><p><strong><span>形容词</span></strong><span>：</span></p><ul><li><strong><span>Quota-based</span></strong><span>（基于配额的）</span></li></ul><p><strong><span>副词</span></strong><span>：</span></p><ul><li><strong><span>Quota</span></strong><span> 没有直接的副词形式。</span></li></ul><p><strong><span>固定搭配</span></strong><span>：</span></p><ul><li><strong><span>Sales quota</span></strong><span>（销售配额）</span></li><li><strong><span>Immigration quota</span></strong><span>（移民配额）</span></li><li><strong><span>Production quota</span></strong><span>（生产配额）</span></li></ul><h3 id='记忆辅助-12'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>：将 </span><strong><span>quota</span></strong><span> 与 </span><strong><span>quote</span></strong><span>（引用）联系起来，想象引用某个数量的限额。</span></li><li><strong><span>场景记忆</span></strong><span>：想象一个销售员为了完成每月的销售配额而努力工作的场景。</span></li><li><strong><span>词根记忆</span></strong><span>：记住词根 </span><strong><span>quot-</span></strong><span> 意为“多少”，</span><strong><span>quota</span></strong><span> 就是“多少”的限额。</span></li></ol><h3 id='小故事-12'><span>小故事</span></h3><p><strong><span>英文</span></strong><span>：</span>
+<span>Sarah, a dedicated salesperson, was struggling to meet her monthly quota. She had two more days left and needed to sell five more cars. With determination, she approached every potential customer, hoping to reach her goal.</span></p><p><strong><span>中文</span></strong><span>：</span>
+<span>莎拉是一位敬业的销售员，她正在努力完成每月的配额。她还有两天时间，需要再卖出五辆车。带着决心，她接近每一位潜在客户，希望能达成目标。</span></p><p>&nbsp;</p></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script></body>
+</html>

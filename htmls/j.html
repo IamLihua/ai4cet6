@@ -1,0 +1,617 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>j</title>
+</head>
+<body class='typora-export os-windows typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#jeopardize">jeopardize</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-1">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-1">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-1">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-1">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-1">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-1">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-1">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-1">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#jerk">jerk</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-2">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-2">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-2">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-2">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-2">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-2">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-2">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-2">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#jog">jog</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-3">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-3">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-3">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-3">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-3">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-3">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-3">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-3">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#junction">junction</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-4">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-4">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-4">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-4">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-4">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-4">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-4">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-4">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#junk">junk</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-5">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-5">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-5">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-5">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-5">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-5">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-5">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-5">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#jury">jury</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-6">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-6">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-6">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-6">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-6">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-6">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-6">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-6">小故事</a></div><ul class="outline-children"></ul></li></ul></li></div></div><div id='write'  class=''><hr /><h2 id='jeopardize'><span>jeopardize</span></h2><h3 id='分析词义-1'><span>分析词义</span></h3><p><strong><span>jeopardize</span></strong><span>（动词）意为“使处于危险之中”，即某种行为或情况可能会对某人或某事造成危害或风险。</span></p><h3 id='列举例句-1'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>Business Context</span></strong></p><ul><li><strong><span>English</span></strong><span>: &quot;The company&#39;s decision to cut costs might jeopardize its long-term growth.&quot;</span></li><li><strong><span>中文</span></strong><span>: “公司削减成本的决定可能会危及它的长期增长。”</span></li></ul></li><li><p><strong><span>Health Context</span></strong></p><ul><li><strong><span>English</span></strong><span>: &quot;Smoking can jeopardize your health and lead to serious diseases.&quot;</span></li><li><strong><span>中文</span></strong><span>: “吸烟可能会危害你的健康，导致严重疾病。”</span></li></ul></li><li><p><strong><span>Relationship Context</span></strong></p><ul><li><strong><span>English</span></strong><span>: &quot;Lying to your partner can jeopardize the trust in your relationship.&quot;</span></li><li><strong><span>中文</span></strong><span>: “对伴侣撒谎可能会破坏你们关系中的信任。”</span></li></ul></li></ol><h3 id='词根分析-1'><span>词根分析</span></h3><ul><li><p><strong><span>词根</span></strong><span>: &quot;jeopard&quot; 来自法语 &quot;jeu parti&quot;，意为“均等的游戏”或“冒险的游戏”。</span></p></li><li><p><strong><span>衍生词</span></strong><span>:</span></p><ul><li><strong><span>jeopardy</span></strong><span>: 危险，风险</span></li><li><strong><span>jeopardous</span></strong><span>: 危险的</span></li></ul></li></ul><h3 id='词缀分析-1'><span>词缀分析</span></h3><ul><li><p><strong><span>jeopardize</span></strong><span> 由 &quot;jeopard&quot;（词根）和 &quot;-ize&quot;（后缀）组成。</span></p><ul><li><strong><span>-ize</span></strong><span>: 动词后缀，表示“使成为”或“使处于某种状态”。</span></li></ul></li><li><p><strong><span>相同词缀的单词</span></strong><span>:</span></p><ul><li><strong><span>modernize</span></strong><span>: 使现代化</span></li><li><strong><span>realize</span></strong><span>: 实现</span></li><li><strong><span>organize</span></strong><span>: 组织</span></li></ul></li></ul><h3 id='发展历史和文化背景-1'><span>发展历史和文化背景</span></h3><p><span>&quot;Jeopardize&quot; 源自中世纪法语 &quot;jeu parti&quot;，意为“均等的游戏”或“冒险的游戏”。这个词最初用于描述一种棋类游戏，其中双方都有均等的机会获胜，但也都有可能输掉。后来，这个词的含义扩展到描述任何使某事物处于危险或风险中的行为。在欧美文化中，&quot;jeopardize&quot; 常用于法律、商业和日常生活中，强调某种行为可能带来的负面后果。</span></p><h3 id='单词变形-1'><span>单词变形</span></h3><ul><li><p><strong><span>名词</span></strong><span>: jeopardy（危险）</span></p></li><li><p><strong><span>动词变形</span></strong><span>:</span></p><ul><li><strong><span>现在时</span></strong><span>: jeopardize</span></li><li><strong><span>过去时</span></strong><span>: jeopardized</span></li><li><strong><span>进行时</span></strong><span>: jeopardizing</span></li></ul></li><li><p><strong><span>形容词</span></strong><span>: jeopardous（危险的）</span></p></li><li><p><strong><span>副词</span></strong><span>: jeopardously（危险地）</span></p></li><li><p><strong><span>固定搭配</span></strong><span>:</span></p><ul><li><strong><span>put in jeopardy</span></strong><span>: 使处于危险之中</span></li><li><strong><span>jeopardize one&#39;s chances</span></strong><span>: 危害某人的机会</span></li></ul></li></ul><h3 id='记忆辅助-1'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>: 将 &quot;jeopardize&quot; 与 &quot;jeopardy&quot;（危险）联系起来，想象一个游戏中的危险局面。</span></li><li><strong><span>词根记忆</span></strong><span>: 记住 &quot;jeopard&quot;（冒险的游戏），再加上 &quot;-ize&quot;（使成为），理解为“使成为冒险的游戏”，即“使处于危险之中”。</span></li><li><strong><span>场景记忆</span></strong><span>: 想象一个场景，如公司决策失误导致危险，用 &quot;jeopardize&quot; 描述。</span></li></ol><h3 id='小故事-1'><span>小故事</span></h3><p><strong><span>English</span></strong><span>:</span>
+<span>&quot;In the dense forest, Sarah&#39;s decision to take a shortcut jeopardized her safety. As night fell, she realized she was lost, hearing distant wolves howling.&quot;</span></p><p><strong><span>中文</span></strong><span>:</span>
+<span>“在茂密的森林里，莎拉决定走捷径，这危及了她的安全。随着夜幕降临，她意识到自己迷路了，远处传来狼群的嚎叫声。”</span></p><hr /><h2 id='jerk'><span>jerk</span></h2><h3 id='分析词义-2'><span>分析词义</span></h3><p><strong><span>jerk</span></strong><span> 这个单词在英语中有多个含义，但最常见的两个意思是：</span></p><ol start='' ><li><strong><span>突然的快速动作</span></strong><span>：指某物或某人突然快速地移动或抖动。</span></li><li><strong><span>粗鲁的人</span></strong><span>：指行为粗鲁、无礼的人。</span></li></ol><h3 id='列举例句-2'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>突然的快速动作</span></strong></p><ul><li><strong><span>例句</span></strong><span>：The car </span><strong><span>jerked</span></strong><span> forward when the light turned green.</span>
+<strong><span>翻译</span></strong><span>：当红灯变绿时，汽车突然向前冲了一下。</span></li><li><strong><span>例句</span></strong><span>：He </span><strong><span>jerked</span></strong><span> his hand away when he touched something hot.</span>
+<strong><span>翻译</span></strong><span>：当他碰到热东西时，他迅速把手抽回。</span></li><li><strong><span>例句</span></strong><span>：The rope </span><strong><span>jerked</span></strong><span> as the boat started to move.</span>
+<strong><span>翻译</span></strong><span>：当船开始移动时，绳子突然猛地一拉。</span></li></ul></li><li><p><strong><span>粗鲁的人</span></strong></p><ul><li><strong><span>例句</span></strong><span>：Don&#39;t be such a </span><strong><span>jerk</span></strong><span> to your friends.</span>
+<strong><span>翻译</span></strong><span>：对你的朋友别这么粗鲁。</span></li><li><strong><span>例句</span></strong><span>：I can&#39;t stand that </span><strong><span>jerk</span></strong><span> who always cuts in line.</span>
+<strong><span>翻译</span></strong><span>：我受不了那个总是插队的粗鲁家伙。</span></li><li><strong><span>例句</span></strong><span>：He&#39;s a real </span><strong><span>jerk</span></strong><span> for not apologizing after what he did.</span>
+<strong><span>翻译</span></strong><span>：他做了那种事还不道歉，真是个粗鲁的人。</span></li></ul></li></ol><h3 id='词根分析-2'><span>词根分析</span></h3><p><strong><span>jerk</span></strong><span> 这个单词没有明显的词根，它是一个独立的词汇。不过，我们可以通过分析其发音和拼写来帮助记忆。</span></p><h3 id='词缀分析-2'><span>词缀分析</span></h3><p><strong><span>jerk</span></strong><span> 没有明显的词缀结构，它是一个单一形态的单词。</span></p><h3 id='发展历史和文化背景-2'><span>发展历史和文化背景</span></h3><p><strong><span>jerk</span></strong><span> 这个词的起源并不完全清楚，但它在英语中已经使用了很长时间。关于“突然的快速动作”这个含义，可能源自于物体突然移动时发出的声音或感觉。而“粗鲁的人”这个含义则是20世纪中期开始在美语中流行，用来形容那些行为不礼貌、令人讨厌的人。</span></p><p><span>在欧美文化中，</span><strong><span>jerk</span></strong><span> 作为“粗鲁的人”这个含义经常出现在日常对话和影视作品中，用来表达对某人的不满或批评。</span></p><h3 id='单词变形-2'><span>单词变形</span></h3><ul><li><p><strong><span>名词</span></strong><span>：jerk（突然的动作；粗鲁的人）</span></p></li><li><p><strong><span>动词</span></strong><span>：jerk（突然移动）</span></p><ul><li><strong><span>现在分词</span></strong><span>：jerking</span></li><li><strong><span>过去式</span></strong><span>：jerked</span></li><li><strong><span>过去分词</span></strong><span>：jerked</span></li></ul></li></ul><p><strong><span>固定搭配和组词</span></strong><span>：</span></p><ul><li><p><strong><span>jerk around</span></strong><span>（戏弄，摆布）</span></p><ul><li><strong><span>例句</span></strong><span>：Stop jerking me around and tell me the truth.</span></li><li><strong><span>翻译</span></strong><span>：别再戏弄我了，告诉我真相。</span></li></ul></li><li><p><strong><span>jerk off</span></strong><span>（手淫，自慰）</span></p></li><li><p><strong><span>jerk reaction</span></strong><span>（本能反应）</span></p><ul><li><strong><span>例句</span></strong><span>：His jerk reaction was to pull his hand away from the hot stove.</span></li><li><strong><span>翻译</span></strong><span>：他的本能反应是把他的手从热炉子上抽开。</span></li></ul></li></ul><h3 id='记忆辅助-2'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>：可以将 </span><strong><span>jerk</span></strong><span> 联想到“急刹车”时的感觉，突然一顿，这样就能记住“突然的快速动作”这个含义。</span></li><li><strong><span>谐音记忆</span></strong><span>：</span><strong><span>jerk</span></strong><span> 的发音有点像“急客”，可以想象一个急匆匆的粗鲁客人，这样就能记住“粗鲁的人”这个含义。</span></li></ol><h3 id='小故事-2'><span>小故事</span></h3><p><strong><span>英文故事</span></strong><span>：</span>
+<span>Tom was walking his dog when suddenly the dog </span><strong><span>jerked</span></strong><span> the leash out of his hand and ran towards a squirrel. Tom chased after, yelling, &quot;You little </span><strong><span>jerk</span></strong><span>!&quot; But the dog just wagged its tail happily.</span></p><p><strong><span>中文翻译</span></strong><span>：</span>
+<span>汤姆正在遛狗，突然狗猛地一拉绳子，从他的手中挣脱，朝一只松鼠跑去。汤姆追在后面喊道：“你这个小坏蛋！”但狗只是开心地摇着尾巴。</span></p><hr /><h2 id='jog'><span>jog</span></h2><h3 id='分析词义-3'><span>分析词义</span></h3><p><strong><span>jog</span></strong><span> 这个单词主要有两个意思：</span></p><ol start='' ><li><strong><span>慢跑</span></strong><span>：指一种轻松的跑步方式，通常用于锻炼身体。</span></li><li><strong><span>轻推</span></strong><span>：指轻轻地推或碰某人或某物，使其移动或引起注意。</span></li></ol><h3 id='列举例句-3'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>慢跑</span></strong></p><ul><li><strong><span>English</span></strong><span>: &quot;I go for a jog every morning to stay fit.&quot;</span></li><li><strong><span>中文</span></strong><span>: &quot;我每天早上慢跑以保持健康。&quot;</span></li></ul></li><li><p><strong><span>慢跑</span></strong></p><ul><li><strong><span>English</span></strong><span>: &quot;She enjoys jogging in the park on weekends.&quot;</span></li><li><strong><span>中文</span></strong><span>: &quot;她喜欢在周末去公园慢跑。&quot;</span></li></ul></li><li><p><strong><span>轻推</span></strong></p><ul><li><strong><span>English</span></strong><span>: &quot;He jogged my elbow during the movie, making me spill my popcorn.&quot;</span></li><li><strong><span>中文</span></strong><span>: &quot;他在看电影时轻轻碰了我的肘部，让我洒了爆米花。&quot;</span></li></ul></li></ol><h3 id='词根分析-3'><span>词根分析</span></h3><p><strong><span>jog</span></strong><span> 这个单词没有明显的词根，它是一个独立的词汇。但可以将其与类似动作的词进行比较，如 </span><strong><span>jolt</span></strong><span>（猛推）和 </span><strong><span>jostle</span></strong><span>（推挤），这些词都有轻微的推动或移动的意思。</span></p><h3 id='词缀分析-3'><span>词缀分析</span></h3><p><strong><span>jog</span></strong><span> 没有明显的词缀，它是一个基础的动词形式。</span></p><h3 id='发展历史和文化背景-3'><span>发展历史和文化背景</span></h3><p><strong><span>jog</span></strong><span> 这个词最早出现在16世纪，最初的意思是“轻推”或“轻碰”。后来，在19世纪，这个词开始被用来描述一种轻松的跑步方式。在欧美文化中，慢跑（jogging）已经成为一种非常流行的健身活动，许多人通过慢跑来保持健康和减轻压力。</span></p><h3 id='单词变形-3'><span>单词变形</span></h3><ul><li><p><strong><span>名词</span></strong><span>: jogger（慢跑者）</span></p><ul><li><strong><span>中文</span></strong><span>: 慢跑者</span></li></ul></li><li><p><strong><span>动词时态</span></strong><span>:</span></p><ul><li><strong><span>现在时</span></strong><span>: jog</span></li><li><strong><span>过去时</span></strong><span>: jogged</span></li><li><strong><span>将来时</span></strong><span>: will jog</span></li><li><strong><span>进行时</span></strong><span>: jogging</span></li><li><strong><span>中文</span></strong><span>: 慢跑、慢跑过、将慢跑、正在慢跑</span></li></ul></li></ul><h3 id='记忆辅助-3'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>: 可以将 </span><strong><span>jog</span></strong><span> 和 </span><strong><span>jogger</span></strong><span> 联系起来记忆，想到慢跑者（jogger）就是在进行慢跑（jog）。</span></li><li><strong><span>场景记忆</span></strong><span>: 想象自己在公园里慢跑的场景，每次想到这个场景就想到 </span><strong><span>jog</span></strong><span> 这个词。</span></li></ol><h3 id='小故事-3'><span>小故事</span></h3><p><strong><span>English</span></strong><span>:</span>
+<span>&quot;Tom decided to start jogging to improve his health. Every morning, he put on his running shoes and jogged around the neighborhood. One day, while jogging, he accidentally jogged into a lamppost, causing a passerby to laugh.&quot;</span></p><p><strong><span>中文</span></strong><span>:</span>
+<span>&quot;汤姆决定开始慢跑以改善健康。每天早上，他穿上跑鞋在小区里慢跑。有一天，他在慢跑时不小心撞到了路灯柱，引得一个路人哈哈大笑。&quot;</span></p><hr /><h2 id='junction'><span>junction</span></h2><h3 id='分析词义-4'><span>分析词义</span></h3><p><strong><span>junction</span></strong><span> 这个词在中文中的意思是“交汇点”或“连接处”。它通常用来描述两条或多条道路、铁路、河流等的交汇或连接的地方。</span></p><h3 id='列举例句-4'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>道路交汇处</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The accident happened at the junction of Main Street and Elm Avenue.</span></li><li><strong><span>中文</span></strong><span>：事故发生在主街和榆树大道的交汇处。</span></li></ul></li><li><p><strong><span>铁路交汇点</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The train will stop at the next junction to allow passengers to transfer.</span></li><li><strong><span>中文</span></strong><span>：火车将在下一个交汇点停下，以便乘客换乘。</span></li></ul></li><li><p><strong><span>电路连接点</span></strong></p><ul><li><strong><span>英文</span></strong><span>：Make sure the wires are properly connected at the junction box.</span></li><li><strong><span>中文</span></strong><span>：确保电线在接线盒中正确连接。</span></li></ul></li></ol><h3 id='词根分析-4'><span>词根分析</span></h3><p><strong><span>junction</span></strong><span> 的词根是 </span><strong><span>junct-</span></strong><span>，来自拉丁语 </span><strong><span>jungere</span></strong><span>，意思是“连接”。</span></p><p><strong><span>由词根衍生出来的其他单词</span></strong><span>：</span></p><ul><li><strong><span>adjunct</span></strong><span>（附属物）</span></li><li><strong><span>conjunction</span></strong><span>（连词）</span></li><li><strong><span>disjunction</span></strong><span>（分离）</span></li></ul><h3 id='词缀分析-4'><span>词缀分析</span></h3><p><strong><span>junction</span></strong><span> 由以下部分组成：</span></p><ul><li><strong><span>junct-</span></strong><span>（词根，表示“连接”）</span></li><li><strong><span>-ion</span></strong><span>（后缀，表示名词，常用于表示行为、状态或结果）</span></li></ul><p><strong><span>相同词缀的其他单词</span></strong><span>：</span></p><ul><li><strong><span>action</span></strong><span>（行动）</span></li><li><strong><span>creation</span></strong><span>（创造）</span></li><li><strong><span>solution</span></strong><span>（解决方案）</span></li></ul><h3 id='发展历史和文化背景-4'><span>发展历史和文化背景</span></h3><p><strong><span>junction</span></strong><span> 这个词源自拉丁语 </span><strong><span>jungere</span></strong><span>，意为“连接”。在中古英语时期，这个词通过法语进入英语。在欧美文化中，</span><strong><span>junction</span></strong><span> 常用来描述交通枢纽或重要的连接点，象征着交汇和融合的概念。</span></p><h3 id='单词变形-4'><span>单词变形</span></h3><ul><li><strong><span>名词</span></strong><span>：junction（交汇点）</span></li><li><strong><span>复数</span></strong><span>：junctions（交汇点们）</span></li><li><strong><span>形容词</span></strong><span>：junctional（交汇的）</span></li><li><strong><span>副词</span></strong><span>：junctionally（交汇地）</span></li></ul><p><strong><span>固定搭配和组词</span></strong><span>：</span></p><ul><li><strong><span>railroad junction</span></strong><span>（铁路交汇点）</span></li><li><strong><span>road junction</span></strong><span>（道路交汇点）</span></li><li><strong><span>junction box</span></strong><span>（接线盒）</span></li></ul><h3 id='记忆辅助-4'><span>记忆辅助</span></h3><p><strong><span>记忆技巧</span></strong><span>：</span></p><ol start='' ><li><strong><span>联想记忆</span></strong><span>：可以将 </span><strong><span>junction</span></strong><span> 和 </span><strong><span>join</span></strong><span>（连接）联系起来，因为它们有相同的词根 </span><strong><span>junct-</span></strong><span>。</span></li><li><strong><span>场景记忆</span></strong><span>：想象一个繁忙的十字路口，多条道路在此交汇，这就是 </span><strong><span>junction</span></strong><span>。</span></li></ol><h3 id='小故事-4'><span>小故事</span></h3><p><strong><span>英文故事</span></strong><span>：</span>
+<span>Tom drove his car to the city center. At the junction of Oak Street and Pine Avenue, he stopped to look at the map. A traffic light turned red, and cars from all directions paused. He felt the pulse of the city at this busy junction.</span></p><p><strong><span>中文翻译</span></strong><span>：</span>
+<span>汤姆开车前往市中心。在橡树街和松树大道的交汇处，他停下来查看地图。交通灯变红了，来自各个方向的车都停了下来。他在这繁忙的交汇处感受到了城市的脉搏。</span></p><hr /><h2 id='junk'><span>junk</span></h2><h3 id='分析词义-5'><span>分析词义</span></h3><p><strong><span>junk</span></strong><span> 这个词在英文中有多种含义，但最常见的是指“垃圾”或“无用的东西”。它可以用来描述废弃的物品、无价值的东西，甚至是不良的食物或毒品。</span></p><h3 id='列举例句-5'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>场景一：清理房间</span></strong></p><ul><li><strong><span>英文例句</span></strong><span>：I need to throw away all the junk in my room.</span></li><li><strong><span>中文翻译</span></strong><span>：我需要扔掉房间里所有的垃圾。</span></li></ul></li><li><p><strong><span>场景二：谈论食物</span></strong></p><ul><li><strong><span>英文例句</span></strong><span>：Eating junk food is bad for your health.</span></li><li><strong><span>中文翻译</span></strong><span>：吃垃圾食品对健康有害。</span></li></ul></li><li><p><strong><span>场景三：描述物品</span></strong></p><ul><li><strong><span>英文例句</span></strong><span>：This old computer is just junk now.</span></li><li><strong><span>中文翻译</span></strong><span>：这台旧电脑现在只是垃圾了。</span></li></ul></li></ol><h3 id='词根分析-5'><span>词根分析</span></h3><p><strong><span>junk</span></strong><span> 这个词没有明显的词根，它是一个独立的词汇。不过，可以将其与其他相关的词汇联系起来记忆。</span></p><h3 id='词缀分析-5'><span>词缀分析</span></h3><p><strong><span>junk</span></strong><span> 也没有明显的词缀，它是一个基础词汇。不过，可以通过添加词缀来形成新的词汇，例如：</span></p><ul><li><strong><span>junkyard</span></strong><span>（垃圾场）：junk + yard</span></li><li><strong><span>junkie</span></strong><span>（吸毒者）：junk + ie</span></li></ul><h3 id='发展历史和文化背景-5'><span>发展历史和文化背景</span></h3><p><strong><span>junk</span></strong><span> 这个词最早来源于中古荷兰语“jonk”，原意是指一种小船。后来，这个词在英语中逐渐演变为指代废弃的物品或无用的东西。在现代英语中，</span><strong><span>junk</span></strong><span> 常用来描述垃圾、劣质产品或不良习惯（如吸毒）。在欧美文化中，</span><strong><span>junk</span></strong><span> 还常常与环保和健康饮食的话题相关联。</span></p><h3 id='单词变形-5'><span>单词变形</span></h3><ul><li><strong><span>名词</span></strong><span>：junk（垃圾）</span></li><li><strong><span>形容词</span></strong><span>：junky（像垃圾的，破旧的）</span></li><li><strong><span>动词</span></strong><span>：junk（丢弃，废弃）</span></li></ul><p><strong><span>固定搭配和组词</span></strong><span>：</span></p><ul><li><strong><span>junk food</span></strong><span>（垃圾食品）</span></li><li><strong><span>junk mail</span></strong><span>（垃圾邮件）</span></li><li><strong><span>junkyard</span></strong><span>（垃圾场）</span></li></ul><h3 id='记忆辅助-5'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>：可以将 </span><strong><span>junk</span></strong><span> 与其发音相似的中文词“僵尸”联系起来，想象僵尸身上堆满了垃圾。</span></li><li><strong><span>场景记忆</span></strong><span>：想象一个堆满垃圾的房间，每次看到垃圾就想到 </span><strong><span>junk</span></strong><span>。</span></li><li><strong><span>词组记忆</span></strong><span>：通过记忆 </span><strong><span>junk food</span></strong><span>（垃圾食品）等常见词组来帮助记忆 </span><strong><span>junk</span></strong><span>。</span></li></ol><h3 id='小故事-5'><span>小故事</span></h3><p><strong><span>英文故事</span></strong><span>：</span>
+<span>Tom walked into his old attic and saw piles of junk. Old toys, broken furniture, and dusty books filled the room. He decided it was time to clean up and throw away the junk.</span></p><p><strong><span>中文翻译</span></strong><span>：</span>
+<span>汤姆走进他的旧阁楼，看到一堆堆的垃圾。旧玩具、破损的家具和满是灰尘的书填满了整个房间。他决定是时候清理并扔掉这些垃圾了。</span></p><hr /><h2 id='jury'><span>jury</span></h2><h3 id='分析词义-6'><span>分析词义</span></h3><p><strong><span>jury</span></strong><span>（陪审团）是指在一审法院中，由普通公民组成的小组，负责听取案件证据并作出裁决。陪审团通常在刑事和民事案件中扮演重要角色，决定被告是否有罪或责任归属。</span></p><h3 id='列举例句-6'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>法律场景</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The jury deliberated for hours before reaching a verdict.</span></li><li><strong><span>中文</span></strong><span>：陪审团经过数小时的商议后才得出裁决。</span></li></ul></li><li><p><strong><span>新闻报道</span></strong></p><ul><li><strong><span>英文</span></strong><span>：A jury of twelve was selected to hear the high-profile case.</span></li><li><strong><span>中文</span></strong><span>：一个由十二人组成的陪审团被选出来审理这起备受关注的案件。</span></li></ul></li><li><p><strong><span>日常生活</span></strong></p><ul><li><strong><span>英文</span></strong><span>：He was called to serve on a jury, but he was excused due to his medical condition.</span></li><li><strong><span>中文</span></strong><span>：他被召集去担任陪审团成员，但由于他的健康状况而被豁免。</span></li></ul></li></ol><h3 id='词根分析-6'><span>词根分析</span></h3><p><strong><span>jury</span></strong><span> 的词根是 </span><strong><span>jur-</span></strong><span>，表示“法律”或“发誓”。</span></p><ul><li><p><strong><span>衍生单词</span></strong><span>：</span></p><ul><li><strong><span>jurisdiction</span></strong><span>（司法权）</span></li><li><strong><span>juror</span></strong><span>（陪审员）</span></li><li><strong><span>jurisprudence</span></strong><span>（法理学）</span></li></ul></li></ul><h3 id='词缀分析-6'><span>词缀分析</span></h3><p><strong><span>jury</span></strong><span> 没有明显的词缀，但可以看作是由词根 </span><strong><span>jur-</span></strong><span> 和后缀 </span><strong><span>-y</span></strong><span> 组成，</span><strong><span>-y</span></strong><span> 在这里表示“与……有关的人或物”。</span></p><ul><li><p><strong><span>相同词缀的单词</span></strong><span>：</span></p><ul><li><strong><span>company</span></strong><span>（公司）</span></li><li><strong><span>family</span></strong><span>（家庭）</span></li><li><strong><span>assembly</span></strong><span>（集会）</span></li></ul></li></ul><h3 id='发展历史和文化背景-6'><span>发展历史和文化背景</span></h3><p><strong><span>jury</span></strong><span> 这个词源自古法语 </span><strong><span>jure</span></strong><span>，意为“发誓”，进一步追溯到拉丁语 </span><strong><span>jurare</span></strong><span>。在中世纪的英格兰，陪审团制度逐渐形成，作为司法公正的保障。陪审团在欧美文化中象征着公民参与和法律民主，是法治社会的重要组成部分。</span></p><h3 id='单词变形-6'><span>单词变形</span></h3><ul><li><p><strong><span>名词</span></strong><span>：jury（陪审团）</span></p></li><li><p><strong><span>复数</span></strong><span>：juries（陪审团们）</span></p></li><li><p><strong><span>形容词</span></strong><span>：juridical（司法的）</span></p></li><li><p><strong><span>副词</span></strong><span>：juridically（司法地）</span></p></li><li><p><strong><span>固定搭配</span></strong><span>：</span></p><ul><li><strong><span>jury duty</span></strong><span>（陪审团义务）</span></li><li><strong><span>jury trial</span></strong><span>（陪审团审判）</span></li><li><strong><span>jury selection</span></strong><span>（陪审团选拔）</span></li></ul></li></ul><h3 id='记忆辅助-6'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>：将 </span><strong><span>jury</span></strong><span> 与 </span><strong><span>jurisdiction</span></strong><span>（司法权）联系起来，两者都涉及法律。</span></li><li><strong><span>场景记忆</span></strong><span>：想象一个法庭场景，陪审团坐在一旁认真听审。</span></li><li><strong><span>谐音记忆</span></strong><span>：</span><strong><span>jury</span></strong><span> 听起来像“绝艺”，陪审团需要“绝艺”来判断案件。</span></li></ol><h3 id='小故事-6'><span>小故事</span></h3><p><strong><span>英文</span></strong><span>：</span>
+<span>In the quiet courtroom, the jury sat solemnly, listening to the evidence. Each member took notes, their faces reflecting the gravity of the decision they had to make. After hours of deliberation, they finally reached a unanimous verdict.</span></p><p><strong><span>中文</span></strong><span>：</span>
+<span>在安静的法庭上，陪审团成员严肃地坐着，聆听证据。每个人都认真做笔记，他们的脸上反映出他们所做决定的严肃性。经过数小时的商议，他们最终达成了一致裁决。</span></p><p>&nbsp;</p></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script></body>
+</html>

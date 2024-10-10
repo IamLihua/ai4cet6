@@ -1,0 +1,611 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>k</title>
+</head>
+<body class='typora-export os-windows typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#keen">keen</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-1">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-1">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-1">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-1">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-1">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-1">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-1">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-1">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#kidnap">kidnap</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-2">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-2">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-2">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-2">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-2">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-2">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-2">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-2">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#kidney">kidney</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-3">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-3">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-3">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-3">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-3">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-3">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-3">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-3">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#kit">kit</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-4">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-4">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-4">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-4">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-4">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-4">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-4">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-4">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#knit">knit</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-5">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-5">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-5">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-5">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-5">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-5">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-5">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-5">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#knob">knob</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-6">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-6">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-6">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-6">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-6">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-6">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-6">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-6">小故事</a></div><ul class="outline-children"></ul></li></ul></li></div></div><div id='write'  class=''><hr /><h2 id='keen'><span>keen</span></h2><h3 id='分析词义-1'><span>分析词义</span></h3><p><strong><span>keen</span></strong><span> 这个单词在中文中有多重含义，主要可以理解为：</span></p><ol start='' ><li><strong><span>敏锐的</span></strong><span>：指感觉或观察力非常强。</span></li><li><strong><span>热心的</span></strong><span>：指对某事非常有兴趣或热情。</span></li><li><strong><span>锋利的</span></strong><span>：指物体边缘非常锐利。</span></li></ol><h3 id='列举例句-1'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>敏锐的</span></strong></p><ul><li><strong><span>英文</span></strong><span>：She has a keen sense of smell.</span></li><li><strong><span>中文</span></strong><span>：她有敏锐的嗅觉。</span></li></ul></li><li><p><strong><span>热心的</span></strong></p><ul><li><strong><span>英文</span></strong><span>：He is very keen on playing basketball.</span></li><li><strong><span>中文</span></strong><span>：他非常热衷于打篮球。</span></li></ul></li><li><p><strong><span>锋利的</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The knife has a keen edge.</span></li><li><strong><span>中文</span></strong><span>：这把刀有锋利的刀刃。</span></li></ul></li></ol><h3 id='词根分析-1'><span>词根分析</span></h3><p><strong><span>keen</span></strong><span> 的词根是 </span><strong><span>keen</span></strong><span> 本身，这个单词源自古英语 </span><strong><span>cēne</span></strong><span>，意为“锋利”或“聪明”。</span></p><p><strong><span>衍生单词</span></strong><span>：</span></p><ul><li><strong><span>keenness</span></strong><span> (n.)：敏锐，热心</span></li><li><strong><span>keenly</span></strong><span> (adv.)：敏锐地，热心地</span></li></ul><h3 id='词缀分析-1'><span>词缀分析</span></h3><p><strong><span>keen</span></strong><span> 是一个单纯词，没有明显的词缀结构。</span></p><h3 id='发展历史和文化背景-1'><span>发展历史和文化背景</span></h3><p><strong><span>keen</span></strong><span> 这个词源自古英语 </span><strong><span>cēne</span></strong><span>，最早的意思是“锋利”。随着时间的推移，这个词的含义逐渐扩展到形容人的感觉敏锐和热情。在欧美文化中，</span><strong><span>keen</span></strong><span> 常用来形容人对某事的热情和专注，也用于描述物体的锋利程度。</span></p><h3 id='单词变形-1'><span>单词变形</span></h3><ul><li><strong><span>名词</span></strong><span>：keenness (敏锐，热心)</span></li><li><strong><span>形容词</span></strong><span>：keen (敏锐的，热心的，锋利的)</span></li><li><strong><span>副词</span></strong><span>：keenly (敏锐地，热心地)</span></li></ul><p><strong><span>固定搭配</span></strong><span>：</span></p><ul><li><p><strong><span>be keen on</span></strong><span> (热衷于)</span></p><ul><li><strong><span>中文</span></strong><span>：热衷于</span></li></ul></li><li><p><strong><span>keen interest</span></strong><span> (浓厚兴趣)</span></p><ul><li><strong><span>中文</span></strong><span>：浓厚兴趣</span></li></ul></li></ul><h3 id='记忆辅助-1'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>：可以将 </span><strong><span>keen</span></strong><span> 和 “看” 联系起来，想象一个人“看”得非常仔细，所以很“敏锐”。</span></li><li><strong><span>谐音记忆</span></strong><span>：</span><strong><span>keen</span></strong><span> 的发音类似“看”，可以记为“看得很尖锐”。</span></li></ol><h3 id='小故事-1'><span>小故事</span></h3><p><strong><span>英文</span></strong><span>：</span>
+<span>Tom was keen on hiking. One day, he noticed a keen edge on a rock. His keen eyes spotted a rare bird. Excited, he shared his find with his friends.</span></p><p><strong><span>中文</span></strong><span>：</span>
+<span>汤姆热衷于徒步旅行。有一天，他注意到一块岩石上有锋利的边缘。他敏锐的眼睛发现了一只稀有的鸟。兴奋之余，他和朋友们分享了这一发现。</span></p><hr /><h2 id='kidnap'><span>kidnap</span></h2><h3 id='分析词义-2'><span>分析词义</span></h3><p><strong><span>kidnap</span></strong><span>（动词）意为“绑架”或“劫持”，指非法地、强制地带走某人，通常是为了索要赎金或其他目的。</span></p><h3 id='列举例句-2'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>Criminal Context</span></strong></p><ul><li><strong><span>English:</span></strong><span> The criminals </span><strong><span>kidnapped</span></strong><span> the wealthy businessman and demanded a huge ransom.</span></li><li><strong><span>中文:</span></strong><span> 罪犯绑架了那位富有的商人，并索要巨额赎金。</span></li></ul></li><li><p><strong><span>News Reporting</span></strong></p><ul><li><strong><span>English:</span></strong><span> The child was </span><strong><span>kidnapped</span></strong><span> from the playground and found later in a nearby forest.</span></li><li><strong><span>中文:</span></strong><span> 那个孩子从游乐场被绑架，后来在附近的森林中被找到。</span></li></ul></li><li><p><strong><span>Historical Event</span></strong></p><ul><li><strong><span>English:</span></strong><span> During the war, many civilians were </span><strong><span>kidnapped</span></strong><span> by the invading army.</span></li><li><strong><span>中文:</span></strong><span> 在战争期间，许多平民被入侵军队绑架。</span></li></ul></li></ol><h3 id='词根分析-2'><span>词根分析</span></h3><ul><li><p><strong><span>词根：</span></strong><span> &quot;kid-&quot; 来自 &quot;kid&quot;（小孩），&quot;-nap&quot; 来自 &quot;nab&quot;（抓捕）。</span></p></li><li><p><strong><span>衍生单词：</span></strong></p><ul><li><strong><span>kidnapper</span></strong><span>（绑架者）</span></li><li><strong><span>kidnapping</span></strong><span>（绑架事件）</span></li></ul></li></ul><h3 id='词缀分析-2'><span>词缀分析</span></h3><ul><li><p><strong><span>词缀：</span></strong><span> &quot;kid-&quot;（小孩），&quot;-nap&quot;（抓捕）</span></p></li><li><p><strong><span>相同词缀的单词：</span></strong></p><ul><li><strong><span>kid-friendly</span></strong><span>（适合小孩的）</span></li><li><strong><span>nab</span></strong><span>（抓住）</span></li></ul></li></ul><h3 id='发展历史和文化背景-2'><span>发展历史和文化背景</span></h3><p><span>&quot;Kidnap&quot; 这个词最早出现在17世纪，由 &quot;kid&quot;（小孩）和 &quot;nab&quot;（抓捕）组合而成。最初主要用于描述绑架小孩的行为，后来泛指任何形式的非法劫持。在欧美文化中，绑架被视为严重的犯罪行为，常常与高赎金、暴力事件和媒体报道相关联。</span></p><h3 id='单词变形-2'><span>单词变形</span></h3><ul><li><p><strong><span>名词：</span></strong><span> kidnapping（绑架事件）</span></p></li><li><p><strong><span>动词时态：</span></strong></p><ul><li><strong><span>现在时：</span></strong><span> kidnaps</span></li><li><strong><span>过去时：</span></strong><span> kidnapped</span></li><li><strong><span>进行时：</span></strong><span> kidnapping</span></li></ul></li><li><p><strong><span>形容词：</span></strong><span> kidnapping-related（与绑架相关的）</span></p></li><li><p><strong><span>副词：</span></strong><span> kidnappingly（绑架地，较少使用）</span></p></li></ul><p><strong><span>固定搭配和组词：</span></strong></p><ul><li><strong><span>kidnap for ransom</span></strong><span>（绑架索要赎金）</span></li><li><strong><span>kidnap attempt</span></strong><span>（绑架企图）</span></li></ul><h3 id='记忆辅助-2'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆：</span></strong><span> 将 &quot;kid&quot;（小孩）和 &quot;nap&quot;（小睡）联系起来，想象一个小孩在睡觉时被劫持。</span></li><li><strong><span>谐音记忆：</span></strong><span> &quot;kidnap&quot; 听起来像 &quot;快点抓&quot;，有助于记住其“绑架”的意思。</span></li></ol><h3 id='小故事-2'><span>小故事</span></h3><p><strong><span>English:</span></strong>
+<span>In a quiet village, Tom heard a scream. He rushed out and saw a car </span><strong><span>kidnapping</span></strong><span> his neighbor&#39;s child. Without hesitation, he called the police and followed the car. Thanks to his quick action, the child was rescued safely.</span></p><p><strong><span>中文:</span></strong>
+<span>在一个宁静的村庄里，汤姆听到了一声尖叫。他冲出去，看到一辆车正在绑架他邻居的孩子。毫不犹豫地，他拨打了警察并跟随那辆车。多亏了他的迅速行动，孩子被安全救出。</span></p><hr /><h2 id='kidney'><span>kidney</span></h2><h3 id='分析词义-3'><span>分析词义</span></h3><p><strong><span>kidney</span></strong><span>（肾脏）是人体的重要器官，主要负责过滤血液，排除废物和多余水分，形成尿液。肾脏还参与调节血压、电解质平衡和红细胞的生成。</span></p><h3 id='列举例句-3'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>医学场景</span></strong></p><ul><li><strong><span>英文</span></strong><span>: &quot;The patient needs a kidney transplant to survive.&quot;</span></li><li><strong><span>中文</span></strong><span>: &quot;病人需要肾脏移植才能存活。&quot;</span></li></ul></li><li><p><strong><span>饮食健康</span></strong></p><ul><li><strong><span>英文</span></strong><span>: &quot;Eating too much salt can damage your kidneys.&quot;</span></li><li><strong><span>中文</span></strong><span>: &quot;吃太多盐会损害你的肾脏。&quot;</span></li></ul></li><li><p><strong><span>日常对话</span></strong></p><ul><li><strong><span>英文</span></strong><span>: &quot;My grandmother has kidney problems, so she has to follow a strict diet.&quot;</span></li><li><strong><span>中文</span></strong><span>: &quot;我奶奶有肾脏问题，所以她必须遵循严格的饮食。&quot;</span></li></ul></li></ol><h3 id='词根分析-3'><span>词根分析</span></h3><ul><li><p><strong><span>词根</span></strong><span>: &quot;kidn-&quot; 来自古英语 &quot;cwidan&quot;，意为“肾脏”。</span></p></li><li><p><strong><span>衍生单词</span></strong><span>:</span></p><ul><li><strong><span>kidney bean</span></strong><span>（四季豆）</span></li><li><strong><span>kidney stone</span></strong><span>（肾结石）</span></li></ul></li></ul><h3 id='词缀分析-3'><span>词缀分析</span></h3><ul><li><p><strong><span>kidney</span></strong><span> 本身没有明显的词缀，是一个独立的词根。</span></p></li><li><p><strong><span>类似单词</span></strong><span>:</span></p><ul><li><strong><span>liver</span></strong><span>（肝脏）</span></li><li><strong><span>heart</span></strong><span>（心脏）</span></li></ul></li></ul><h3 id='发展历史和文化背景-3'><span>发展历史和文化背景</span></h3><p><span>“kidney”一词源于古英语“cwidan”，经过演变成为现代英语中的“kidney”。在欧美文化中，肾脏不仅是一个重要的医学概念，还常用于比喻，如“have the guts”中的“guts”有时可以替换为“kidneys”，表示勇气或胆量。此外，肾脏在饮食健康中也占据重要地位，许多健康饮食建议都会特别关注肾脏健康。</span></p><h3 id='单词变形-3'><span>单词变形</span></h3><ul><li><p><strong><span>名词</span></strong><span>: kidney（肾脏）</span></p></li><li><p><strong><span>复数</span></strong><span>: kidneys</span></p></li><li><p><strong><span>形容词</span></strong><span>: renal（肾脏的）</span></p></li><li><p><strong><span>副词</span></strong><span>: 无特定副词形式</span></p></li><li><p><strong><span>固定搭配</span></strong><span>:</span></p><ul><li><strong><span>kidney failure</span></strong><span>（肾衰竭）</span></li><li><strong><span>kidney disease</span></strong><span>（肾脏疾病）</span></li><li><strong><span>kidney transplant</span></strong><span>（肾脏移植）</span></li></ul></li></ul><h3 id='记忆辅助-3'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>: 将“kidney”与“kid”联系起来，想象一个小孩子（kid）在体内负责过滤血液的器官。</span></li><li><strong><span>谐音记忆</span></strong><span>: “kidney”发音类似“开灯”，可以想象每次“开灯”时，肾脏开始工作。</span></li><li><strong><span>图像记忆</span></strong><span>: 画一个肾脏的图，旁边标注“kidney”，帮助视觉记忆。</span></li></ol><h3 id='小故事-3'><span>小故事</span></h3><p><strong><span>英文</span></strong><span>:</span>
+<span>&quot;In the quiet hospital room, Sarah held her mother&#39;s hand tightly. The doctor had just explained that a kidney transplant was necessary. Despite the fear, Sarah felt a surge of determination to help her mom get better.&quot;</span></p><p><strong><span>中文</span></strong><span>:</span>
+<span>&quot;在安静的病房里，莎拉紧紧握住母亲的手。医生刚刚解释说需要进行肾脏移植。尽管感到害怕，莎拉还是感到一股决心，要帮助妈妈康复。&quot;</span></p><hr /><h2 id='kit'><span>kit</span></h2><h3 id='分析词义-4'><span>分析词义</span></h3><p><strong><span>Kit</span></strong><span> 这个单词在中文中通常指的是“工具包”或“套装”。它通常包含一系列用于特定活动或任务的物品。例如，一个急救包（first aid kit）就包含处理伤口所需的各类物品。</span></p><h3 id='列举例句-4'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>场景：户外活动</span></strong></p><ul><li><strong><span>英文</span></strong><span>：Before going camping, make sure you have a complete survival kit.</span></li><li><strong><span>中文</span></strong><span>：去露营之前，确保你有一个完整的生存工具包。</span></li></ul></li><li><p><strong><span>场景：化妆</span></strong></p><ul><li><strong><span>英文</span></strong><span>：She opened her makeup kit to choose a lipstick.</span></li><li><strong><span>中文</span></strong><span>：她打开她的化妆包选择一支口红。</span></li></ul></li><li><p><strong><span>场景：修理</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The mechanic used his tool kit to fix the car.</span></li><li><strong><span>中文</span></strong><span>：机械师用他的工具包修理汽车。</span></li></ul></li></ol><h3 id='词根分析-4'><span>词根分析</span></h3><p><strong><span>Kit</span></strong><span> 这个单词没有明显的词根，它是一个独立的词汇。但我们可以通过类似的词汇来理解它的含义，比如“kitchen”（厨房），因为厨房也是一个包含多种工具和物品的地方。</span></p><h3 id='词缀分析-4'><span>词缀分析</span></h3><p><strong><span>Kit</span></strong><span> 没有明显的词缀结构，它是一个基础词汇。不过，我们可以通过添加词缀来形成新的词汇，例如：</span></p><ul><li><strong><span>Kitchenette</span></strong><span>（小厨房）：-ette 是一个表示“小”的后缀。</span></li></ul><h3 id='发展历史和文化背景-4'><span>发展历史和文化背景</span></h3><p><strong><span>Kit</span></strong><span> 这个单词起源于古英语“cythth”，意为“工具”或“装备”。在中世纪，这个词逐渐演变为指代一套工具或装备。在现代英语中，</span><strong><span>kit</span></strong><span> 广泛用于指代各种套装，如运动装备、化妆包等。在欧美文化中，</span><strong><span>kit</span></strong><span> 强调的是准备齐全和方便使用。</span></p><h3 id='单词变形-4'><span>单词变形</span></h3><ul><li><strong><span>名词</span></strong><span>：kit（工具包）</span></li><li><strong><span>复数</span></strong><span>：kits（工具包们）</span></li><li><strong><span>形容词</span></strong><span>：kitted（装备好的），例如：He was all kitted out for the hike.（他为远足做好了全副装备。）</span></li><li><strong><span>动词</span></strong><span>：kit out（装备），例如：We need to kit out the new office.（我们需要为新办公室配备设备。）</span></li></ul><p><strong><span>固定搭配</span></strong><span>：</span></p><ul><li><strong><span>Kit and caboodle</span></strong><span>（全部东西）：We sold the whole kit and caboodle in the garage sale.（我们在车库大甩卖中卖掉了全部东西。）</span></li></ul><h3 id='记忆辅助-4'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>：可以将 </span><strong><span>kit</span></strong><span> 联想到“厨房”（kitchen），因为厨房里有很多工具和物品。</span></li><li><strong><span>谐音记忆</span></strong><span>：</span><strong><span>kit</span></strong><span> 的发音类似“快它”，可以想象成“快速找到它”的工具包。</span></li></ol><h3 id='小故事-4'><span>小故事</span></h3><p><strong><span>英文</span></strong><span>：</span>
+<span>Tom was excited about his new hobby. He opened the photography kit and found a camera, lenses, and accessories. &quot;This is perfect,&quot; he thought, as he planned his first photo shoot.</span></p><p><strong><span>中文</span></strong><span>：</span>
+<span>汤姆对他的新爱好感到兴奋。他打开摄影工具包，发现里面有相机、镜头和配件。“这太完美了，”他想，同时计划他的第一次摄影。</span></p><hr /><h2 id='knit'><span>knit</span></h2><h3 id='分析词义-5'><span>分析词义</span></h3><p><strong><span>knit</span></strong><span> 这个单词主要有两个意思：</span></p><ol start='' ><li><strong><span>编织</span></strong><span>：用针和线将纱线织成布料或衣物。</span></li><li><strong><span>紧密结合</span></strong><span>：使事物紧密地连接在一起。</span></li></ol><h3 id='列举例句-5'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>编织衣物</span></strong></p><ul><li><strong><span>英文</span></strong><span>：She enjoys knitting sweaters for her grandchildren.</span></li><li><strong><span>中文</span></strong><span>：她喜欢为她的孙子们编织毛衣。</span></li></ul></li><li><p><strong><span>紧密结合</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The community is tightly knit, with everyone knowing each other.</span></li><li><strong><span>中文</span></strong><span>：这个社区关系紧密，每个人都互相认识。</span></li></ul></li><li><p><strong><span>编织动作</span></strong></p><ul><li><strong><span>英文</span></strong><span>：He sat by the fireplace, knitting a scarf.</span></li><li><strong><span>中文</span></strong><span>：他坐在壁炉旁，编织一条围巾。</span></li></ul></li></ol><h3 id='词根分析-5'><span>词根分析</span></h3><p><strong><span>knit</span></strong><span> 的词根是 </span><strong><span>knit</span></strong><span>，源自古英语的 </span><strong><span>cnyttan</span></strong><span>，意为“绑紧”或“编织”。</span></p><p><strong><span>衍生单词</span></strong><span>：</span></p><ul><li><strong><span>knitter</span></strong><span>（编织者）</span></li><li><strong><span>knitting</span></strong><span>（编织物）</span></li><li><strong><span>unknit</span></strong><span>（解开编织）</span></li></ul><h3 id='词缀分析-5'><span>词缀分析</span></h3><p><strong><span>knit</span></strong><span> 是一个单纯词，没有明显的词缀。</span></p><h3 id='发展历史和文化背景-5'><span>发展历史和文化背景</span></h3><p><strong><span>knit</span></strong><span> 这个词源自古英语的 </span><strong><span>cnyttan</span></strong><span>，意为“绑紧”或“编织”。在中世纪，编织技术逐渐普及，这个词也开始广泛使用。在欧美文化中，编织不仅是一种手工艺，还象征着家庭温暖和社区团结。许多家庭有编织的传统，特别是在寒冷的冬季，编织毛衣、围巾等成为了一种重要的家庭活动。</span></p><h3 id='单词变形-5'><span>单词变形</span></h3><ul><li><p><strong><span>名词</span></strong><span>：knitter（编织者），knitting（编织物）</span></p></li><li><p><strong><span>动词时态</span></strong><span>：</span></p><ul><li><span>现在时：knit, knits</span></li><li><span>过去时：knitted</span></li><li><span>过去分词：knitted</span></li><li><span>现在分词：knitting</span></li></ul></li></ul><p><strong><span>固定搭配</span></strong><span>：</span></p><ul><li><strong><span>knit together</span></strong><span>（紧密结合）</span></li><li><strong><span>knit up</span></strong><span>（织完）</span></li></ul><h3 id='记忆辅助-5'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>：可以将 </span><strong><span>knit</span></strong><span> 联想到“紧扣”（k-nit），想象用针线将东西紧紧扣在一起。</span></li><li><strong><span>谐音记忆</span></strong><span>：</span><strong><span>knit</span></strong><span> 听起来像“紧扣”，紧扣在一起就是编织。</span></li></ol><h3 id='小故事-5'><span>小故事</span></h3><p><strong><span>英文</span></strong><span>：</span>
+<span>In the cozy living room, Grandma sat in her favorite chair, her hands deftly knitting a blue scarf. The rhythmic clacking of the needles was a soothing sound, knitting the family together with warmth and love.</span></p><p><strong><span>中文</span></strong><span>：</span>
+<span>在温馨的客厅里，奶奶坐在她最喜欢的椅子上，灵巧的双手正在编织一条蓝色的围巾。针尖有节奏的敲击声是一种舒缓的声音，用温暖和爱将家人紧密地编织在一起。</span></p><hr /><h2 id='knob'><span>knob</span></h2><h3 id='分析词义-6'><span>分析词义</span></h3><p><strong><span>knob</span></strong><span>（名词）指的是一个小的、圆形或椭圆形的突出物，通常用于转动或控制某个设备或装置。比如门把手、收音机的旋钮等。</span></p><h3 id='列举例句-6'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>场景一：门把手</span></strong></p><ul><li><strong><span>英文</span></strong><span>：He turned the knob and opened the door.</span></li><li><strong><span>中文</span></strong><span>：他转动门把手，打开了门。</span></li></ul></li><li><p><strong><span>场景二：收音机</span></strong></p><ul><li><strong><span>英文</span></strong><span>：She adjusted the volume by turning the knob on the radio.</span></li><li><strong><span>中文</span></strong><span>：她通过转动收音机上的旋钮来调整音量。</span></li></ul></li><li><p><strong><span>场景三：家具</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The antique dresser had beautiful brass knobs.</span></li><li><strong><span>中文</span></strong><span>：这个古董梳妆台有漂亮的黄铜把手。</span></li></ul></li></ol><h3 id='词根分析-6'><span>词根分析</span></h3><p><strong><span>knob</span></strong><span> 这个词没有明显的词根，它是一个独立的词汇。不过，可以将其与其他类似的词汇进行对比记忆。</span></p><h3 id='词缀分析-6'><span>词缀分析</span></h3><p><strong><span>knob</span></strong><span> 没有明显的词缀结构，它是一个基础词汇。</span></p><h3 id='发展历史和文化背景-6'><span>发展历史和文化背景</span></h3><p><strong><span>knob</span></strong><span> 这个词的起源可以追溯到古英语和中世纪英语，最初指的是一个小的、圆形的物体。随着时间的推移，这个词的应用范围逐渐扩大，涵盖了各种用于控制和操作的圆形或椭圆形突出物。在欧美文化中，knob 经常与家居设计和工业设计相关联，体现了对细节和功能的重视。</span></p><h3 id='单词变形-6'><span>单词变形</span></h3><ul><li><strong><span>名词</span></strong><span>：knob（把手、旋钮）</span></li><li><strong><span>复数</span></strong><span>：knobs</span></li><li><strong><span>形容词</span></strong><span>：knobbed（有把手的）</span></li><li><strong><span>副词</span></strong><span>：knob-like（像把手一样的）</span></li></ul><p><strong><span>固定搭配和组词</span></strong><span>：</span></p><ul><li><strong><span>doorknob</span></strong><span>（门把手）</span></li><li><strong><span>control knob</span></strong><span>（控制旋钮）</span></li><li><strong><span>knob and tube</span></strong><span>（老式电线系统）</span></li></ul><h3 id='记忆辅助-6'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>：可以将 </span><strong><span>knob</span></strong><span> 与 </span><strong><span>nob</span></strong><span>（贵族）联系起来，想象贵族家里的门把手都是精致的knob。</span></li><li><strong><span>图像记忆</span></strong><span>：在脑海中想象一个门把手或收音机旋钮的图像，每次想到 </span><strong><span>knob</span></strong><span> 就回忆这个图像。</span></li><li><strong><span>发音记忆</span></strong><span>：</span><strong><span>knob</span></strong><span> 的发音类似“诺布”，可以想象一个“诺布”形状的门把手。</span></li></ol><h3 id='小故事-6'><span>小故事</span></h3><p><strong><span>英文</span></strong><span>：</span>
+<span>Tom reached for the shiny brass knob on the old wooden door. As he turned it, the door creaked open, revealing a hidden room filled with ancient treasures.</span></p><p><strong><span>中文</span></strong><span>：</span>
+<span>汤姆伸手去转动那扇老木门上的闪亮黄铜把手。随着他把把手转动，门吱呀一声打开，露出了一个隐藏的房间，里面满是古代的珍宝。</span></p><p>&nbsp;</p></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script></body>
+</html>

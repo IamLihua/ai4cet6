@@ -1,0 +1,607 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>y</title>
+</head>
+<body class='typora-export os-windows typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#yacht">yacht</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-1">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-1">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-1">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-1">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-1">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-1">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-1">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-1">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#yell">yell</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-2">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-2">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-2">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-2">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-2">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-2">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-2">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-2">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#yield">yield</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-3">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-3">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-3">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-3">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-3">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-3">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-3">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-3">小故事</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#yoke">yoke</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#分析词义-4">分析词义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列举例句-4">列举例句</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词根分析-4">词根分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#词缀分析-4">词缀分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#发展历史和文化背景-4">发展历史和文化背景</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单词变形-4">单词变形</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#记忆辅助-4">记忆辅助</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#小故事-4">小故事</a></div><ul class="outline-children"></ul></li></ul></li></div></div><div id='write'  class=''><hr /><h2 id='yacht'><span>yacht</span></h2><h3 id='分析词义-1'><span>分析词义</span></h3><p><strong><span>Yacht</span></strong><span>（发音：/jɒt/）指的是一种豪华的船，通常用于娱乐或比赛。它可以是帆船（sailing yacht）或动力船（motor yacht）。中文中可以理解为“游艇”。</span></p><h3 id='列举例句-1'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>休闲场景</span></strong></p><ul><li><strong><span>英文</span></strong><span>：We spent our vacation sailing on a yacht in the Mediterranean.</span></li><li><strong><span>中文</span></strong><span>：我们在地中海乘坐游艇度过了假期。</span></li></ul></li><li><p><strong><span>商务场景</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The CEO invited his top clients for a cruise on his private yacht.</span></li><li><strong><span>中文</span></strong><span>：首席执行官邀请了他的顶级客户乘坐他的私人游艇巡航。</span></li></ul></li><li><p><strong><span>比赛场景</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The yacht race was thrilling, with competitors battling strong winds.</span></li><li><strong><span>中文</span></strong><span>：这场游艇比赛非常刺激，参赛者在强风中激烈角逐。</span></li></ul></li></ol><h3 id='词根分析-1'><span>词根分析</span></h3><p><strong><span>Yacht</span></strong><span> 的词根并不明显，因为它是一个借词，源自荷兰语“jacht”，意为“追逐”或“狩猎船”。这个词根并没有直接衍生出其他常见的英语单词。</span></p><h3 id='词缀分析-1'><span>词缀分析</span></h3><p><strong><span>Yacht</span></strong><span> 本身没有明显的词缀结构，因为它是一个整体借词。不过，我们可以通过添加词缀来形成新的词汇：</span></p><ul><li><strong><span>Yachting</span></strong><span>（动词形式）：表示乘坐游艇的活动。</span></li><li><strong><span>Yachtsman</span></strong><span>（名词）：指男性游艇驾驶者。</span></li><li><strong><span>Yachtswoman</span></strong><span>（名词）：指女性游艇驾驶者。</span></li></ul><h3 id='发展历史和文化背景-1'><span>发展历史和文化背景</span></h3><p><strong><span>Yacht</span></strong><span> 一词源于17世纪的荷兰语“jacht”，最初指的是一种轻快的船，用于追捕海盗或其他船只。后来，这个词逐渐演变为指代豪华的娱乐船只。在欧美文化中，拥有游艇常常被视为财富和地位的象征。许多富豪和名人都有自己的私人游艇，用于休闲和社交活动。</span></p><h3 id='单词变形-1'><span>单词变形</span></h3><ul><li><strong><span>名词</span></strong><span>：Yacht（游艇）</span></li><li><strong><span>复数</span></strong><span>：Yachts（游艇们）</span></li><li><strong><span>动词</span></strong><span>：Yacht（乘坐游艇），Yachting（游艇活动）</span></li><li><strong><span>形容词</span></strong><span>：Yachting（与游艇相关的）</span></li><li><strong><span>副词</span></strong><span>：无特定副词形式</span></li></ul><p><strong><span>固定搭配和组词</span></strong><span>：</span></p><ul><li><strong><span>Yacht club</span></strong><span>（游艇俱乐部）</span></li><li><strong><span>Yacht race</span></strong><span>（游艇比赛）</span></li><li><strong><span>Yacht party</span></strong><span>（游艇派对）</span></li></ul><h3 id='记忆辅助-1'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>：可以将“yacht”与“ yacht”（像“游”字的发音）联系起来，想象自己在“游”艇上。</span></li><li><strong><span>场景记忆</span></strong><span>：想象一个豪华游艇在海上航行的画面，船上有人在享受阳光和海风。</span></li><li><strong><span>谐音记忆</span></strong><span>：可以将“yacht”谐音为“雅艇”，意为高雅的船。</span></li></ol><h3 id='小故事-1'><span>小故事</span></h3><p><strong><span>英文</span></strong><span>：</span>
+<span>On a sunny weekend, Tom invited his friends to his new yacht. They sailed across the sparkling blue sea, enjoying the fresh breeze and the sound of waves. As the sun set, they anchored near a secluded island, lighting up the night with laughter and music.</span></p><p><strong><span>中文</span></strong><span>：</span>
+<span>在一个阳光明媚的周末，汤姆邀请朋友们来到他的新游艇。他们航行在波光粼粼的蓝海上，享受着清新的海风和波涛声。当太阳落山时，他们在一个人迹罕至的小岛附近抛锚，笑声和音乐点亮了夜晚。</span></p><hr /><h2 id='yell'><span>yell</span></h2><h3 id='分析词义-2'><span>分析词义</span></h3><p><strong><span>yell</span></strong><span>（动词）的意思是大声喊叫，通常是因为愤怒、恐惧、兴奋或其他强烈的情绪。中文可以理解为“大喊”、“大叫”。</span></p><h3 id='列举例句-2'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>愤怒的场景</span></strong></p><ul><li><strong><span>英文</span></strong><span>：He yelled at the driver who cut him off in traffic.</span></li><li><strong><span>中文</span></strong><span>：他对在交通中突然超车的司机大喊大叫。</span></li></ul></li><li><p><strong><span>兴奋的场景</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The fans yelled in excitement when their team scored a goal.</span></li><li><strong><span>中文</span></strong><span>：当他们的球队进球时，球迷们兴奋地大喊。</span></li></ul></li><li><p><strong><span>求救的场景</span></strong></p><ul><li><strong><span>英文</span></strong><span>：She yelled for help when she fell into the river.</span></li><li><strong><span>中文</span></strong><span>：当她掉进河里时，她大声呼救。</span></li></ul></li></ol><h3 id='词根分析-2'><span>词根分析</span></h3><p><strong><span>yell</span></strong><span> 的词根是 </span><strong><span>yel-</span></strong><span>，但这个词根并不常见，更多是作为一个独立的单词存在。</span></p><h3 id='词缀分析-2'><span>词缀分析</span></h3><p><strong><span>yell</span></strong><span> 没有明显的词缀结构，它是一个简单词。</span></p><h3 id='发展历史和文化背景-2'><span>发展历史和文化背景</span></h3><p><strong><span>yell</span></strong><span> 这个词源自古英语的 “gellan” 或 “giellan”，意为“叫喊”。在中古英语中演变为 “yelien”。这个词在英语中使用广泛，常用来描述情绪激动时的喊叫。在欧美文化中，yell 可以是表达强烈情感的一种方式，比如在体育比赛中，观众会大声喊叫以支持自己的队伍。</span></p><h3 id='单词变形-2'><span>单词变形</span></h3><ul><li><p><strong><span>名词</span></strong><span>：yell（喊叫）</span></p><ul><li><strong><span>例句</span></strong><span>：His yell echoed through the hallway.（他的喊叫声在走廊里回荡。）</span></li></ul></li><li><p><strong><span>动词变形</span></strong><span>：</span></p><ul><li><strong><span>现在时</span></strong><span>：yell</span></li><li><strong><span>过去时</span></strong><span>：yelled</span></li><li><strong><span>过去分词</span></strong><span>：yelled</span></li><li><strong><span>现在分词</span></strong><span>：yelling</span></li><li><strong><span>例句</span></strong><span>：He was yelling at the top of his lungs.（他正在用尽全力大喊。）</span></li></ul></li></ul><h3 id='记忆辅助-2'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>：可以将 </span><strong><span>yell</span></strong><span> 和 “耶” 联系起来，想象自己在看球赛时兴奋地大喊“耶！”。</span></li><li><strong><span>场景记忆</span></strong><span>：想象一个场景，比如在紧急情况下大喊求救，这样可以帮助你记住这个词。</span></li></ol><h3 id='小故事-2'><span>小故事</span></h3><p><strong><span>英文</span></strong><span>：</span>
+<span>In the crowded stadium, John felt a surge of excitement as his favorite player scored. He stood up and yelled, &quot;Goal!&quot; His voice was lost in the sea of cheers but his heart was full of joy.</span></p><p><strong><span>中文</span></strong><span>：</span>
+<span>在拥挤的体育场里，当约翰最喜欢的球员进球时，他感到一阵兴奋。他站起来大喊：“进球！”他的声音淹没在欢呼声中，但他的心里充满了喜悦。</span></p><hr /><h2 id='yield'><span>yield</span></h2><h3 id='分析词义-3'><span>分析词义</span></h3><p><strong><span>yield</span></strong><span> 这个单词有多重含义，主要可以归纳为以下几种：</span></p><ol start='' ><li><strong><span>屈服、让步</span></strong><span>：指在压力或要求下放弃抵抗或立场。</span></li><li><strong><span>产生、产出</span></strong><span>：指生产或提供某种结果或产品。</span></li><li><strong><span>收益、回报</span></strong><span>：指投资或其他活动所获得的收益。</span></li></ol><h3 id='列举例句-3'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>屈服、让步</span></strong></p><ul><li><strong><span>英文</span></strong><span>：He yielded to the pressure from his colleagues.</span></li><li><strong><span>中文</span></strong><span>：他在同事的压力下屈服了。</span></li></ul></li><li><p><strong><span>产生、产出</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The farm yields a large amount of crops every year.</span></li><li><strong><span>中文</span></strong><span>：这个农场每年产出大量的农作物。</span></li></ul></li><li><p><strong><span>收益、回报</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The investment yielded a high return.</span></li><li><strong><span>中文</span></strong><span>：这项投资获得了高回报。</span></li></ul></li></ol><h3 id='词根分析-3'><span>词根分析</span></h3><p><strong><span>yield</span></strong><span> 的词根是 </span><strong><span>yield</span></strong><span> 本身，源自古英语的 “geldan”，意为“支付、给予”。</span></p><p><strong><span>衍生单词</span></strong><span>：</span></p><ul><li><strong><span>yielding</span></strong><span>（形容词，意为“易屈服的、柔顺的”）</span></li><li><strong><span>yielder</span></strong><span>（名词，意为“屈服者、让步者”）</span></li></ul><h3 id='词缀分析-3'><span>词缀分析</span></h3><p><strong><span>yield</span></strong><span> 是一个基本单词，没有明显的词缀结构。</span></p><p><strong><span>相同词缀的单词</span></strong><span>：</span></p><ul><li><span>由于 </span><strong><span>yield</span></strong><span> 没有明显的词缀，难以列出相同词缀的单词。</span></li></ul><h3 id='发展历史和文化背景-3'><span>发展历史和文化背景</span></h3><p><strong><span>yield</span></strong><span> 这个单词源自古英语的 “geldan”，意为“支付、给予”。随着时间的推移，其含义逐渐扩展到“屈服、让步”和“产生、产出”。在欧美文化中，</span><strong><span>yield</span></strong><span> 常用于描述在压力或竞争中的让步行为，也广泛用于经济学和农业领域，表示投资回报和农作物产量。</span></p><h3 id='单词变形-3'><span>单词变形</span></h3><ul><li><p><strong><span>名词</span></strong><span>：yield（产量、收益）</span></p></li><li><p><strong><span>动词</span></strong><span>：</span></p><ul><li><strong><span>现在时</span></strong><span>：yield（屈服、产生）</span></li><li><strong><span>过去时</span></strong><span>：yielded</span></li><li><strong><span>过去分词</span></strong><span>：yielded</span></li><li><strong><span>现在分词</span></strong><span>：yielding</span></li></ul></li><li><p><strong><span>形容词</span></strong><span>：yielding（易屈服的、柔顺的）</span></p></li><li><p><strong><span>副词</span></strong><span>：yieldingly（易屈服地、柔顺地）</span></p></li></ul><p><strong><span>固定搭配</span></strong><span>：</span></p><ul><li><strong><span>yield to</span></strong><span>（向……屈服）</span></li><li><strong><span>yield results</span></strong><span>（产生结果）</span></li></ul><h3 id='记忆辅助-3'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>：将 </span><strong><span>yield</span></strong><span> 与 “让步” 联系起来，想象在压力下“让”出一步。</span></li><li><strong><span>场景记忆</span></strong><span>：想象一个农场每年“产出”大量农作物，用“产出”来记忆 </span><strong><span>yield</span></strong><span> 的另一个含义。</span></li><li><strong><span>谐音记忆</span></strong><span>：</span><strong><span>yield</span></strong><span> 的发音类似“一得”，可以联想为“一得收益”。</span></li></ol><h3 id='小故事-3'><span>小故事</span></h3><p><strong><span>英文</span></strong><span>：</span>
+<span>In the lush green fields, the farmer proudly observed his crops. After months of hard work, the land finally yielded a bountiful harvest. The golden wheat swayed gently, promising prosperity.</span></p><p><strong><span>中文</span></strong><span>：</span>
+<span>在郁郁葱葱的田野里，农民自豪地观察着他的农作物。经过数月的辛勤劳作，土地终于产出了一季丰收。金黄的麦穗轻轻摇曳，预示着繁荣。</span></p><hr /><h2 id='yoke'><span>yoke</span></h2><h3 id='分析词义-4'><span>分析词义</span></h3><p><strong><span>yoke</span></strong><span> 这个单词主要有以下几个意思：</span></p><ol start='' ><li><strong><span>牛轭</span></strong><span>：一种套在牛脖子上的工具，用来连接牛和犁或其他农具。</span></li><li><strong><span>束缚、控制</span></strong><span>：比喻意义上的控制和限制。</span></li><li><strong><span>连接、结合</span></strong><span>：指将两个或多个事物连接在一起。</span></li></ol><h3 id='列举例句-4'><span>列举例句</span></h3><ol start='' ><li><p><strong><span>牛轭</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The farmer placed the yoke on the oxen to plow the field.</span></li><li><strong><span>中文</span></strong><span>：农民把牛轭放在牛身上，以便耕田。</span></li></ul></li><li><p><strong><span>束缚、控制</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The heavy workload was like a yoke around her neck.</span></li><li><strong><span>中文</span></strong><span>：繁重的工作量就像套在她脖子上的枷锁。</span></li></ul></li><li><p><strong><span>连接、结合</span></strong></p><ul><li><strong><span>英文</span></strong><span>：The two countries were yoked together by a common history.</span></li><li><strong><span>中文</span></strong><span>：这两个国家因共同的历史而紧密相连。</span></li></ul></li></ol><h3 id='词根分析-4'><span>词根分析</span></h3><p><strong><span>yoke</span></strong><span> 的词根是 </span><strong><span>yok-</span></strong><span>，表示“连接”或“结合”。</span></p><p><strong><span>衍生单词</span></strong><span>：</span></p><ul><li><strong><span>yoked</span></strong><span>（被连接的）</span></li><li><strong><span>yoking</span></strong><span>（连接的动作）</span></li><li><strong><span>unyoke</span></strong><span>（解开连接）</span></li></ul><h3 id='词缀分析-4'><span>词缀分析</span></h3><p><strong><span>yoke</span></strong><span> 本身是一个基础词，没有明显的词缀结构。但可以通过添加词缀形成新的单词：</span></p><p><strong><span>衍生单词</span></strong><span>：</span></p><ul><li><strong><span>unyoke</span></strong><span>（前缀 </span><strong><span>un-</span></strong><span> 表示“不”或“反”，意为“解开连接”）</span></li><li><strong><span>yokel</span></strong><span>（后缀 </span><strong><span>-el</span></strong><span> 表示“小”或“人”，意为“乡下人”）</span></li></ul><h3 id='发展历史和文化背景-4'><span>发展历史和文化背景</span></h3><p><strong><span>yoke</span></strong><span> 这个词源自古英语 </span><strong><span>geoc</span></strong><span>，进一步追溯到 Proto-Germanic（原始日耳曼语）的 *</span><strong><span>juką</span></strong><span>，最终源于 Proto-Indo-European（原始印欧语）的 *</span><strong><span>yeug-</span></strong><span>，意为“连接”或“结合”。在农业社会中，牛轭是重要的农具，象征着劳动和束缚。因此，</span><strong><span>yoke</span></strong><span> 也引申出“束缚”和“控制”的意思。</span></p><p><span>在欧美文化中，</span><strong><span>yoke</span></strong><span> 除了实际的农具意义外，常用于比喻沉重的负担或束缚，如宗教、政治或社会压力。</span></p><h3 id='单词变形-4'><span>单词变形</span></h3><ul><li><strong><span>名词</span></strong><span>：yoke</span></li><li><strong><span>动词</span></strong><span>：yoke, yoked, yoking</span></li><li><strong><span>形容词</span></strong><span>：yoked（被连接的）</span></li><li><strong><span>副词</span></strong><span>：yokely（罕见，意为“像牛轭一样”）</span></li></ul><p><strong><span>固定搭配</span></strong><span>：</span></p><ul><li><strong><span>yoke of marriage</span></strong><span>（婚姻的束缚）</span></li><li><strong><span>yoke together</span></strong><span>（将…紧密连接）</span></li></ul><h3 id='记忆辅助-4'><span>记忆辅助</span></h3><ol start='' ><li><strong><span>联想记忆</span></strong><span>：将 </span><strong><span>yoke</span></strong><span> 和 “牛轭”联系起来，想象一头牛被牛轭束缚的场景。</span></li><li><strong><span>谐音记忆</span></strong><span>：</span><strong><span>yoke</span></strong><span> 发音类似“约”，可以联想为“约定”或“束缚”。</span></li><li><strong><span>词根记忆</span></strong><span>：记住词根 </span><strong><span>yok-</span></strong><span> 表示“连接”，有助于记忆相关单词。</span></li></ol><h3 id='小故事-4'><span>小故事</span></h3><p><strong><span>英文</span></strong><span>：</span>
+<span>In the serene countryside, an old farmer gently placed the yoke on his oxen. As they plowed the field, the yoke symbolized their unspoken bond. Despite the heavy yoke, the oxen worked tirelessly, embodying the farmer&#39;s unwavering spirit.</span></p><p><strong><span>中文</span></strong><span>：</span>
+<span>在宁静的乡村，一位老农温柔地把牛轭放在他的牛身上。当它们耕田时，牛轭象征着他们之间无言的纽带。尽管牛轭沉重，牛儿们却不知疲倦地工作，体现了农民坚定不移的精神。</span></p><p>&nbsp;</p></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script></body>
+</html>
