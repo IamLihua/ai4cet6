@@ -1,6 +1,9 @@
 # ai4cet6
 使用ai生成6级单词本
 
+[在线网站](https://iamlihua.github.io/ai4cet6/)
+
+
 ## 引用
 
 最近看到了[Ceelog/DictionaryByGPT4: 一本 GPT4 生成的单词书📚 (github.com)](https://github.com/Ceelog/DictionaryByGPT4)
